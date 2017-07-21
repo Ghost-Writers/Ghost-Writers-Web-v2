@@ -28,6 +28,7 @@
         "@ionic-native/splash-screen": "3.12.1",
         "@ionic-native/status-bar": "3.12.1",
         "@ionic/storage": "2.0.1",
+        "bcrypt": "^1.0.2",
         "body-parser": "^1.17.2",
         "com.wikitude.phonegap.WikitudePlugin": "https://github.com/Wikitude/wikitude-cordova-plugin.git",
         "cordova-android": "~6.1.2",
