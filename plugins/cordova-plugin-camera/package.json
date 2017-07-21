@@ -1,5 +1,8 @@
 {
-<<<<<<< HEAD
+  "name": "cordova-plugin-camera",
+  "version": "2.4.1",
+  "description": "Cordova Camera Plugin",
+  "types": "./types/index.d.ts",
   "_args": [
     [
       {
@@ -53,12 +56,12 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-camera/issues"
   },
-=======
+
   "name": "cordova-plugin-camera",
   "version": "2.4.1",
   "description": "Cordova Camera Plugin",
   "types": "./types/index.d.ts",
->>>>>>> removed plugins folder from gitignore
+
   "cordova": {
     "id": "cordova-plugin-camera",
     "platforms": [
@@ -75,7 +78,11 @@
       "windows"
     ]
   },
-<<<<<<< HEAD
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-camera"
+  },
   "dependencies": {},
   "description": "Cordova Camera Plugin",
   "devDependencies": {
@@ -97,12 +104,10 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-camera#readme",
-=======
   "repository": {
     "type": "git",
     "url": "https://github.com/apache/cordova-plugin-camera"
   },
->>>>>>> removed plugins folder from gitignore
   "keywords": [
     "cordova",
     "camera",
@@ -119,7 +124,28 @@
     "cordova-browser",
     "cordova-windows"
   ],
-<<<<<<< HEAD
+
+  "scripts": {
+    "precommit": "npm run gen-docs && git add README.md",
+    "gen-docs": "jsdoc2md --template \"jsdoc2md/TEMPLATE.md\" \"www/**/*.js\" --plugin \"dmd-plugin-cordova-plugin\" > README.md",
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  },
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "engines": {
+    "cordovaDependencies": {
+      "3.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "devDependencies": {
+    "dmd-plugin-cordova-plugin": "^0.1.0",
+    "husky": "^0.10.1",
+    "jsdoc-to-markdown": "^1.2.0",
+    "jshint": "^2.6.0"
+  },
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -174,7 +200,6 @@
   },
   "types": "./types/index.d.ts",
   "version": "2.4.1"
-=======
   "scripts": {
     "precommit": "npm run gen-docs && git add README.md",
     "gen-docs": "jsdoc2md --template \"jsdoc2md/TEMPLATE.md\" \"www/**/*.js\" --plugin \"dmd-plugin-cordova-plugin\" > README.md",
@@ -196,5 +221,5 @@
     "jsdoc-to-markdown": "^1.2.0",
     "jshint": "^2.6.0"
   }
->>>>>>> removed plugins folder from gitignore
+
 }
