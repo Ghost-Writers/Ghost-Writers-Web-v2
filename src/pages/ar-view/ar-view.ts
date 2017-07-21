@@ -33,7 +33,6 @@ export class ARView {
   }
 
   ionViewDidEnter() {
-    let context = this;
 
     var startupConfiguration: any = { "camera_position": "back" };
     // WikitudePlugin.isDeviceSupported(function(success){
@@ -64,6 +63,7 @@ export class ARView {
     );
   }
 
+<<<<<<< HEAD
 //   /////////
 
 
@@ -199,3 +199,6 @@ export class ARView {
 //   ////////////
 
 }
+=======
+}
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
