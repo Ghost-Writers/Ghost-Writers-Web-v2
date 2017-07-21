@@ -1,5 +1,6 @@
 var Art = require('../models/art.js');
 var User = require('../models/user.js');
+var Marker = require('../models/marker.js');
 
 module.exports = {
   show: function (req, res) {
@@ -11,14 +12,14 @@ module.exports = {
         if (err) return console.log(err)
         res.json({
           success: true,
-          message: 'post found',
+          message: 'art found',
           art: art
         });
       })
   },
   index: function (req, res) {
     var searchBy = {};
-    
+
     if (req.params.city) {
       searchBy['city'] = req.params.city
     }
@@ -42,20 +43,31 @@ module.exports = {
       .exec(function (err, user) {
         console.log('user from ctrl2 = ', user);
         if (err) return console.log(err)
-        var new_art = new Art(req.body); // form data from create page with events, city, title, etc.
-        new_art.created_by_id = user._id;
-        new_art.save(function (err, art) {
-          if (err) return console.log(err)
-          user.created_art.push(art);
-          user.save(function (err, user) {
+        Marker
+          .findOne({ _id: req.body.marker_id })
+          .exec(function (err, marker) {
             if (err) return console.log(err)
-            res.json({
-              success: true,
-              messge: 'art created',
-              art: art
+            var new_art = new Art(req.body); // form data from create page with events, city, title, etc.
+            new_art.created_by_id = user._id;
+            new_art.marker_id = marker._id;
+            new_art.save(function (err, art) {
+              if (err) return console.log(err)
+              marker.art.push(art);
+              marker.save(function(err, marker) {
+                if (err) return console.log(err)
+                user.created_art.push(art);
+                user.save(function (err, user) {
+                  if (err) return console.log(err)
+                  res.json({
+                    success: true,
+                    messge: 'art created',
+                    art: art,
+                    marker: marker
+                  })
+                })
+              })
             })
           })
-        })
       })
   },
   // all plans user created but not done
@@ -109,7 +121,7 @@ module.exports = {
         if (req.body.altitude) {
           plan.altitude = req.body.altitude;
         }
-        
+
         art.save(function (err, art) {
           if (err) return console.log(err)
           res.json({
@@ -145,29 +157,29 @@ module.exports = {
       //   })
       // })
   },
-  mark_art_found: function(req, res) {
+  mark_art_found: function (req, res) {
     User
-      .findOne({_id: req.body.user_id})
-      .exec(function(err, user) {
+      .findOne({ _id: req.body.user_id })
+      .exec(function (err, user) {
         if (err) return console.log(err)
         Art
-          .findOne({_id: req.params.id})
-          .exec(function(err, art) {
+          .findOne({ _id: req.params.id })
+          .exec(function (err, art) {
             if (err) return console.log(err)
-           
+
             if (art.found.indexOf(user._id) === -1) {
               art.found.push(user._id);
             }
             art
-              .save(function(err, art) {
+              .save(function (err, art) {
                 if (err) return console.log(err)
                 if (user.found_art.indexOf(user._id) === -1) {
                   user.found_art.push(art._id);
                 }
                 user
-                  .save(function(err, user) {
+                  .save(function (err, user) {
                     if (err) return console.log(err)
-                    res.json({success: true, message: 'art has been marked as found', art: art, user: user})
+                    res.json({ success: true, message: 'art has been marked as found', art: art, user: user })
                   })
               })
           })

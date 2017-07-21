@@ -1,4 +1,9 @@
 {
+<<<<<<< HEAD
+  "name": "cordova-plugin-geolocation",
+  "version": "2.4.3",
+  "description": "Cordova Geolocation Plugin",
+=======
   "_args": [
     [
       {
@@ -52,6 +57,7 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-geolocation/issues"
   },
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   "cordova": {
     "id": "cordova-plugin-geolocation",
     "platforms": [
@@ -67,6 +73,12 @@
       "firefoxos"
     ]
   },
+<<<<<<< HEAD
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-geolocation"
+  },
+=======
   "dependencies": {},
   "description": "Cordova Geolocation Plugin",
   "devDependencies": {
@@ -85,6 +97,7 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-geolocation#readme",
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   "keywords": [
     "cordova",
     "geolocation",
@@ -100,6 +113,24 @@
     "cordova-windows",
     "cordova-firefoxos"
   ],
+<<<<<<< HEAD
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  },
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "engines": {
+    "cordovaDependencies": {
+      "3.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+=======
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -139,4 +170,5 @@
     "test": "npm run jshint"
   },
   "version": "2.4.3"
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
 }

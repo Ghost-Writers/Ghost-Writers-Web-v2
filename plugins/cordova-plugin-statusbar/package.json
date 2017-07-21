@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
+  "name": "cordova-plugin-statusbar",
+  "version": "2.2.3",
+  "description": "Cordova StatusBar Plugin",
+  "types": "./types/index.d.ts",
+=======
   "_args": [
     [
       {
@@ -52,6 +58,7 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-statusbar/issues"
   },
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   "cordova": {
     "id": "cordova-plugin-statusbar",
     "platforms": [
@@ -62,6 +69,25 @@
       "windows"
     ]
   },
+<<<<<<< HEAD
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-statusbar"
+  },
+  "keywords": [
+    "cordova",
+    "statusbar",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-windows"
+  ],
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+=======
   "dependencies": {},
   "description": "Cordova StatusBar Plugin",
   "devDependencies": {
@@ -71,6 +97,7 @@
   "dist": {
     "shasum": "51c5e02ad433bebd0b0dc977a446eb91dfee1502",
     "tarball": "https://registry.npmjs.org/cordova-plugin-statusbar/-/cordova-plugin-statusbar-2.2.3.tgz"
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   },
   "engines": {
     "cordovaDependencies": {
@@ -82,6 +109,13 @@
       }
     }
   },
+<<<<<<< HEAD
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+=======
   "homepage": "https://github.com/apache/cordova-plugin-statusbar#readme",
   "keywords": [
     "cordova",
@@ -137,4 +171,5 @@
   },
   "types": "./types/index.d.ts",
   "version": "2.2.3"
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
 }

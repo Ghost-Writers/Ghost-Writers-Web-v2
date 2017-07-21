@@ -8,6 +8,7 @@ var path = require('path');
 var dotenv = require('dotenv').config()
 var userRoutes = require('./server/router/user_router.js');
 var artRoutes = require('./server/router/art_router.js');
+var markerRoutes = require('./server/router/marker_rts.js');
 var http = require('http')
 var fetch = require('node-fetch');
 
@@ -47,6 +48,7 @@ app.use(function(req, res, next){
 // route middleware
 app.use('/api/users', userRoutes);
 app.use('/api/art', artRoutes);
+app.use('/api/marker', markerRoutes);
 
 
 app.get('/', function(req, res) {
@@ -54,6 +56,6 @@ app.get('/', function(req, res) {
 })
 
 app.listen(port, function(err) {
-  if (err) return console.log('err=', err)
+  if (err) return console.log(err)
   console.log('connected to server at port: ' + port);
 })

@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
+  "name": "cordova-plugin-splashscreen",
+  "version": "4.0.3",
+  "description": "Cordova Splashscreen Plugin",
+  "types": "./types/index.d.ts",
+=======
   "_args": [
     [
       {
@@ -52,6 +58,7 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-splashscreen/issues"
   },
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   "cordova": {
     "id": "cordova-plugin-splashscreen",
     "platforms": [
@@ -66,6 +73,29 @@
       "tizen"
     ]
   },
+<<<<<<< HEAD
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-splashscreen"
+  },
+  "keywords": [
+    "cordova",
+    "splashscreen",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-amazon-fireos",
+    "cordova-ubuntu",
+    "cordova-ios",
+    "cordova-blackberry10",
+    "cordova-wp8",
+    "cordova-windows8",
+    "cordova-windows",
+    "cordova-tizen"
+  ],
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+=======
   "dependencies": {},
   "description": "Cordova Splashscreen Plugin",
   "devDependencies": {
@@ -75,6 +105,7 @@
   "dist": {
     "shasum": "773cd1363c1f3bacb9901663e9e3793dd3e0a19d",
     "tarball": "https://registry.npmjs.org/cordova-plugin-splashscreen/-/cordova-plugin-splashscreen-4.0.3.tgz"
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   },
   "engines": {
     "cordovaDependencies": {
@@ -90,6 +121,13 @@
       }
     }
   },
+<<<<<<< HEAD
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+=======
   "homepage": "https://github.com/apache/cordova-plugin-splashscreen#readme",
   "keywords": [
     "cordova",
@@ -149,4 +187,5 @@
   },
   "types": "./types/index.d.ts",
   "version": "4.0.3"
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
 }

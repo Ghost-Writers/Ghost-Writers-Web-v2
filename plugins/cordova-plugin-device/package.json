@@ -1,4 +1,10 @@
 {
+<<<<<<< HEAD
+  "name": "cordova-plugin-device",
+  "version": "1.1.6",
+  "description": "Cordova Device Plugin",
+  "types": "./types/index.d.ts",
+=======
   "_args": [
     [
       {
@@ -52,6 +58,7 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-device/issues"
   },
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   "cordova": {
     "id": "cordova-plugin-device",
     "platforms": [
@@ -70,6 +77,12 @@
       "osx"
     ]
   },
+<<<<<<< HEAD
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-device"
+  },
+=======
   "dependencies": {},
   "description": "Cordova Device Plugin",
   "devDependencies": {
@@ -88,6 +101,7 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-device#readme",
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   "keywords": [
     "cordova",
     "device",
@@ -106,6 +120,24 @@
     "cordova-browser",
     "cordova-osx"
   ],
+<<<<<<< HEAD
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  },
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+=======
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -146,4 +178,5 @@
   },
   "types": "./types/index.d.ts",
   "version": "1.1.6"
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
 }
