@@ -2,6 +2,7 @@ var World = {
 	loaded: false,
 
 	init: function initFn() {
+		alert('creating overlay')
 		this.createOverlays();
 	},
 
@@ -9,49 +10,65 @@ var World = {
 
 		AR.logger.activateDebugMode();
 		AR.logger.debug('logger activated...');
+                                                                    //assets/final_test.wtc
+		this.targetCollectionResource = new AR.TargetCollectionResource("https://s3-eu-west-1.amazonaws.com/target-manager-live/4347e66ff6155f7613085378b923ba68/5963b498f67e6315b7658a2a/wtc/5.0/tracker.wtc", {
+		});
 
-		// this.targetCollectionResource = new AR.TargetCollectionResource("assets/final_test.wtc", {
-		// });
+		this.tracker = new AR.ImageTracker(this.targetCollectionResource, {
+			onTargetsLoaded: this.worldLoaded
+		});
 
-		// this.tracker = new AR.ImageTracker(this.targetCollectionResource, {
-		// 	onTargetsLoaded: this.worldLoaded
-		// });
-
-
+                                                                          // '162f925e3bc546141ebbdfae63ff97f1', '595edc6053f64031675c2b92'
 		// this.cloudRecognitionService = new AR.CloudRecognitionService("dca0e79374ebe373d002d984495e729b", "5963b498f67e6315b7658a2a", {
 		// 	onInitialized: this.worldLoaded,
 		// 	onError: function (err) { alert('error happended' + err) }
 		// });
 		// this.tracker = new AR.ImageTracker(this.cloudRecognitionService);
 
-		var cloudRecognitionService = new AR.CloudRecognitionService("dca0e79374ebe373d002d984495e729b", "5963b498f67e6315b7658a2a", {
-			onInitialized: function () {
-				// enable UI elements to start recognition calls
-				// alert('in on initialized...');
-			}
-		});
-		var tracker = new AR.ImageTracker(cloudRecognitionService, {
-			onTargetsLoaded: function () {
-				// alert('all targets loaded')
+		// var cloudRecognitionService = new AR.CloudRecognitionService("dca0e79374ebe373d002d984495e729b", "5963b498f67e6315b7658a2a", {
+		// 	onInitialized: function () {
+		// 		// enable UI elements to start recognition calls
+		// 		alert('in on initialized...');
+		// 		AR.logger.info('Cloud Recognition Initialized')
+		// 	},
+		// 	onError: function(err) {
+		// 		alert('error happened');
+		// 		AR.logger.error('recognition error' + err);
+		// 	}
+		// });
 
-			}
-		});
+		// var tracker = new AR.ImageTracker(cloudRecognitionService, {
+		// 	onTargetsLoaded: function () {
+		// 		alert('all targets loaded')
+		// 		AR.logger.info('All Targets Initialized')
+
+		// 	},
+		// 	onError: function(err) {
+		// 		alert('error happened' + err)
+		// 		AR.logger.error('error with tracker' + err)
+		// 	},
+		// 	onDisabled: function() {
+		// 		alert('i was disabled!')
+		// 	}	
+		// });
 
 
-			cloudRecognitionService.startContinuousRecognition(500, function onInterruptionCallback(suggestedInterval) {
-					alert('this is error' + suggestedInterval);
-				}, function onRecognizedCallback(recognized, responseData) {
-					if (recognized) {
-						// A target image was found in the processed camera frame.
-						// The name of the recognized target can be retrieved from the responseData object.
-						// alert('recognized target image: ' + responseData.targetInfo.name);
-					}
-					else {
-						// No target image could be found in the processed camera frame.
-					}
-				}, function onErrorCallback(code, errorObject) {
-					alert(code + ' ' + errorObject + '<< error');
-				})
+			// cloudRecognitionService.startContinuousRecognition(500, function onInterruptionCallback(suggestedInterval) {
+			// 		alert('this is error' + suggestedInterval);
+			// 	}, function onRecognizedCallback(recognized, responseData) {
+			// 		if (recognized) {
+			// 			alert('Found Target');
+			// 			// A target image was found in the processed camera frame.
+			// 			// The name of the recognized target can be retrieved from the responseData object.
+			// 			// alert('recognized target image: ' + responseData.targetInfo.name);
+			// 		}
+			// 		else {
+			// 			// No target image could be found in the processed camera frame.
+			// 		}
+			// 	}, function onErrorCallback(code, errorObject) {
+			// 		alert(code + ' ' + errorObject + '<< error');
+			// 		AR.logger.info('continiuous error ' + errorObject)
+			// 	})
 
 		// ... additional code...
 
@@ -128,7 +145,7 @@ var World = {
 		// loop through targets and make trackable for each target
 		// add drawable for each one
 
-		var pageOne = new AR.ImageTrackable(tracker, "*", {
+		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
 			drawables: {
 				cam: [artList]
 			}

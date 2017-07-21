@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { Http, Headers } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
@@ -10,7 +9,7 @@ import 'rxjs/Rx';
     TC_ID: string = '5963b498f67e6315b7658a2a';
     baseUrl: string = 'https://api.wikitude.com';
     path_add_get_target:string = '/cloudRecognition/targetCollection/' + this.TC_ID + '/target/';
-    path_generate_TC: string = '/cloudRecognition/targetCollection/' + this.TC_ID + '/generation/cloudarchive';
+    path_generate_TC: string = '/cloudRecognition/targetCollection/' + this.TC_ID + '/generation/wtc';
     headers: any = new Headers({
         'Content-Type': 'application/json',
 	    'X-Token': 'fe087579ece1518a3a67dae3021888c7',

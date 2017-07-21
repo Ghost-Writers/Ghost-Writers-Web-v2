@@ -4,8 +4,6 @@ import { ProfilePage } from '../profile/profile';
 import { SignupPage } from '../signup/signup';
 import { UserService } from '../../app/services/service';
 import { TabsPage } from '../tabs/tabs';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import { CreatePage } from '../createpage/createpage';
 
 declare var swal:any;
 
@@ -24,28 +22,7 @@ export class LoginPage {
   postData: any;
   public base64Image: string;
 
-  constructor(public navCtrl: NavController, private userService: UserService, private camera: Camera) {
-    this.base64Image = 'https://placehold.it/150x150'
-  }
-
-  takePicture() {
-    this.camera.getPicture({
-      quality: 75,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      sourceType: this.camera.PictureSourceType.CAMERA,
-      allowEdit: true,
-      encodingType: this.camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 300,
-      saveToPhotoAlbum: false
-    }).then(imageData => {
-      this.base64Image = "data:image/jpeg;base64," + imageData;
-      localStorage['image'] = imageData;
-      console.log(localStorage)
-    }, error => {
-      console.log("ERROR -> " + JSON.stringify(error));
-    });
-  }
+  constructor(public navCtrl: NavController, private userService: UserService) {}
 
   user = {
     username: null,
@@ -107,10 +84,6 @@ export class LoginPage {
       }
     )
     
-  }
-
-  picChange(data) {
-    console.log(data)
   }
 
   redirectToTabsPage() {
