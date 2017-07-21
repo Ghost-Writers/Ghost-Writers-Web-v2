@@ -19,7 +19,6 @@ declare var swal: any;
       .subscribe(
         users=> this.users = users
       )
-      console.log(this.users)
   }
 
   baseUrl = 'http://52.15.90.163:3002/'
@@ -30,8 +29,14 @@ declare var swal: any;
     .map((response: Response)=> response.json());
   }
 
+    getArt(): Observable<any>{
+    return this.http
+    .get(this.baseUrl + 'api/art')
+    .map(res => res.json());
+  }
+
+
   postUser(data) {
-    console.log(data)
     return this.http.post(this.baseUrl + 'api/users', data)
     .map(res => res.json())
   }
