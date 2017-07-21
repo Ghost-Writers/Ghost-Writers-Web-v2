@@ -50,10 +50,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-<<<<<<< HEAD
-=======
-    Camera,
->>>>>>> dope login page
     Geolocation,
     InAppBrowser
   ]
