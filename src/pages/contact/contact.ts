@@ -1,11 +1,15 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { Geolocation } from '@ionic-native/geolocation'
+import { NavController, NavParams } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+import { LoginPage } from '../login/login';
+import { Geolocation } from '@ionic-native/geolocation';
+import { UserService } from '../../app/services/service';
 
 declare var google;
 
 @Component({
   selector: 'page-contact',
+  providers: [UserService],
   templateUrl: 'contact.html'
 })
 export class ContactPage {
@@ -13,53 +17,81 @@ export class ContactPage {
   @ViewChild('map') mapElementL: ElementRef;
   map: any;
 
-  constructor(public navCtrl: NavController, public geolocation: Geolocation) {
+  name: any;
+  art: any;
+  constructor(public navCtrl: NavController, private navParams: NavParams, public geolocation: Geolocation, private userService: UserService) {
+    this.name = navParams.get('name')
+  }
 
+  ngOnInit() {
+    this.userService.getArt()
+      .subscribe(
+      arts => this.art = arts
+      )
+
+    console.log('anything')
+    this.geolocation.getCurrentPosition()
+      .then(position => console.log(position))
   }
 
   ionViewDidLoad() {
     this.loadMap();
   }
 
-
-  loadMap() {
-    this.geolocation.getCurrentPosition()
-    .then((position) => {
-
-    let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-    let mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+  getAllArt() {
+    for (let i = 0; i < this.art.art.length; i++) {
+      console.log(this.art.art[i])
+      this.addArtMarkers(this.art.art[i].latitude, this.art.art[i].longitude);
     }
-
-    this.map = new google.maps.Map(this.mapElementL.nativeElement, mapOptions);
-    this.addMarker()
-    }, (err) => {
-      console.log(err);
-    });
+    console.log(this.art.art)
   }
 
-  addMarker() {
+  addArtMarkers(latitude, longitude) {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
-    });
-
-    let content = "<img src='http://www.wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg' style='width: 100px; height: auto'>";
-
-    this.addInfoWindow(marker, content);
+      position: {lat: latitude, lng: longitude}
+    })
   }
 
   addInfoWindow(marker, content) {
+
     let infoWindow = new google.maps.InfoWindow({
       content: content
     });
+
     google.maps.event.addListener(marker, 'click', () => {
       infoWindow.open(this.map, marker);
     });
+
+  }
+
+  loadMap() {
+    this.geolocation.getCurrentPosition()
+      .then((position) => {
+        var im = 'http://www.robotwoods.com/dev/misc/bluecircle.png';
+        let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        console.log(position.coords.latitude, position.coords.longitude)
+
+        let mapOptions = {
+          center: latLng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        this.map = new google.maps.Map(this.mapElementL.nativeElement, mapOptions);
+        var userMarker = new google.maps.Marker({
+          position: latLng,
+          map: this.map,
+          icon: im
+        })
+      }, (err) => {
+        console.log(err);
+      });
+  }
+
+  redirectToLogin() {
+
   }
 
 }

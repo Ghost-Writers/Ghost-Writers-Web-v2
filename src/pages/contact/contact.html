@@ -6,13 +6,11 @@
 
 <ion-content padding>
 
-  <h2>Wussup {{name}}</h2>
+<ion-content>
+  <div #map id="map"></div>  
+</ion-content>
 
-  Username <br /> Art pieces posted <br /> <br /> Art <br /> <br />
 
-  <ion-content>
-    <div #map id="map"></div>
-  </ion-content>
-
-  <button style="margin-top: 15px" color="cancel" ion-button full (click)="redirectToLogin()">Sign Out</button>
+<button style="margin-top: 5px" color="teal" ion-button full (click)="getAllArt()">Get Art</button>
+<button style="margin-top: 15px" color="cancel" ion-button full (click)="redirectToLogin()">Sign Out</button>
 </ion-content>
