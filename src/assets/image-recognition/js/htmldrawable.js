@@ -14,9 +14,19 @@ var World = {
 		this.targetCollectionResource = new AR.TargetCollectionResource("https://s3-eu-west-1.amazonaws.com/target-manager-live/4347e66ff6155f7613085378b923ba68/5963b498f67e6315b7658a2a/wtc/5.0/tracker.wtc", {
 		});
 
+<<<<<<< HEAD
 		this.tracker = new AR.ImageTracker(this.targetCollectionResource, {
 			onTargetsLoaded: this.worldLoaded
 		});
+=======
+		// this.targetCollectionResource = new AR.TargetCollectionResource("https://s3-eu-west-1.amazonaws.com/target-manager-live/4347e66ff6155f7613085378b923ba68/5963b498f67e6315b7658a2a/wtc/5.0/tracker.wtc", {
+		// });
+
+		// this.tracker = new AR.ImageTracker(this.targetCollectionResource, {
+		// 	onTargetsLoaded: this.worldLoaded
+		// });
+
+>>>>>>> (add) routes to add markers and images on top of markers and append to user model as well
 
                                                                           // '162f925e3bc546141ebbdfae63ff97f1', '595edc6053f64031675c2b92'
 		// this.cloudRecognitionService = new AR.CloudRecognitionService("dca0e79374ebe373d002d984495e729b", "5963b498f67e6315b7658a2a", {
@@ -25,6 +35,7 @@ var World = {
 		// });
 		// this.tracker = new AR.ImageTracker(this.cloudRecognitionService);
 
+<<<<<<< HEAD
 		// var cloudRecognitionService = new AR.CloudRecognitionService("dca0e79374ebe373d002d984495e729b", "5963b498f67e6315b7658a2a", {
 		// 	onInitialized: function () {
 		// 		// enable UI elements to start recognition calls
@@ -36,6 +47,19 @@ var World = {
 		// 		AR.logger.error('recognition error' + err);
 		// 	}
 		// });
+=======
+		var cloudRecognitionService = new AR.CloudRecognitionService("162f925e3bc546141ebbdfae63ff97f1", "595edc6053f64031675c2b92", {
+			onInitialized: function () {
+				
+				// enable UI elements to start recognition calls
+				alert('in on initialized...');
+			}
+		});
+		var tracker = new AR.ImageTracker(cloudRecognitionService, {
+			onTargetsLoaded: function () {
+				// alert('all targets loaded')
+				alert('all targets loaded')
+>>>>>>> (add) routes to add markers and images on top of markers and append to user model as well
 
 		// var tracker = new AR.ImageTracker(cloudRecognitionService, {
 		// 	onTargetsLoaded: function () {
@@ -53,6 +77,7 @@ var World = {
 		// });
 
 
+<<<<<<< HEAD
 			// cloudRecognitionService.startContinuousRecognition(500, function onInterruptionCallback(suggestedInterval) {
 			// 		alert('this is error' + suggestedInterval);
 			// 	}, function onRecognizedCallback(recognized, responseData) {
@@ -69,6 +94,24 @@ var World = {
 			// 		alert(code + ' ' + errorObject + '<< error');
 			// 		AR.logger.info('continiuous error ' + errorObject)
 			// 	})
+=======
+			cloudRecognitionService.startContinuousRecognition(500, function onInterruptionCallback(suggestedInterval) {
+					alert('this is error' + suggestedInterval);
+				}, function onRecognizedCallback(recognized, responseData) {
+					if (recognized) {
+						// A target image was found in the processed camera frame.
+						// The name of the recognized target can be retrieved from the responseData object.
+						// alert('recognized target image: ' + responseData.targetInfo.name);
+						alert('image recognized...')
+					}
+					else {
+						// No target image could be found in the processed camera frame.
+						alert('image not recognized...')
+					}
+				}, function onErrorCallback(code, errorObject) {
+					alert(code + ' ' + errorObject + '<< error');
+				})
+>>>>>>> (add) routes to add markers and images on top of markers and append to user model as well
 
 		// ... additional code...
 
@@ -113,7 +156,7 @@ var World = {
 		// });
 
 
-
+		
 
 		var artList = new AR.HtmlDrawable({
 			uri: "assets/art_list.html"
@@ -184,7 +227,8 @@ var World = {
 	},
 
 	worldLoaded: function worldLoadedFn() {
-		alert(this.tracker + '<< tracker')
+		alert('collection loaded')
+		// alert(this.tracker + '<< tracker')
 		var cssDivInstructions = " style='display: table-cell;vertical-align: middle; text-align: right; width: 50%; padding-right: 15px;'";
 		var cssDivSurfer = " style='display: table-cell;vertical-align: middle; text-align: left; padding-right: 15px; width: 38px'";
 		var cssDivBiker = " style='display: table-cell;vertical-align: middle; text-align: left; padding-right: 15px;'";
