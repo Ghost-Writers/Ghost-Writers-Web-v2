@@ -121,20 +121,20 @@ module.exports = {
       })
   },
   delete_art: function (req, res) {
-    User
-      .findOne({
-        _id: req.params.id
-      }) // from session/jwt-token/local-storage - refers to current user.
-      .exec(function (err, user) {
-        if (err) return console.log(err)
-        user.created_arts.pull({
-          _id: req.body.art_id
-        }) // removes art from user's array of arts
-        user.save(function (err, user) {
-          if (err) return console.log(err)
+    // User
+    //   .findOne({
+    //     _id: req.params.id
+    //   }) // from session/jwt-token/local-storage - refers to current user.
+    //   .exec(function (err, user) {
+    //     if (err) return console.log(err)
+    //     user.created_arts.pull({
+    //       _id: req.body.art_id
+    //     }) // removes art from user's array of arts
+    //     user.save(function (err, user) {
+    //       if (err) return console.log(err)
           Art
             .findOneAndRemove({
-              _id: req.body.art_id
+              _id: req.params.id
             }, function (err) { // deletes art instance... mongodb is no-realational so if we just deleted the art, it would still exist in the user's array of arts.
               if (err) return console.log(err)
               res.json({
@@ -142,8 +142,8 @@ module.exports = {
                 message: 'art successfully deleted'
               });
             })
-        })
-      })
+      //   })
+      // })
   },
   mark_art_found: function(req, res) {
     User

@@ -1,17 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
+    <ion-title>Profile Page</ion-title>
   </ion-navbar>
 </ion-header>
 
+<ion-content padding>
+
 <ion-content>
-  <ion-list>
-    <ion-list-header>Schneeweis.Technology</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      info@schneeeweis.technology
-    </ion-item>
-  </ion-list>
+  <div #map id="map"></div>  
+</ion-content>
+
+
+<button style="margin-top: 5px" color="teal" ion-button full (click)="getAllArt()">Get Art</button>
+<button style="margin-top: 15px" color="cancel" ion-button full (click)="redirectToLogin()">Sign Out</button>
 </ion-content>
