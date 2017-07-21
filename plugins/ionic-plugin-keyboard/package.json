@@ -1,5 +1,8 @@
 {
-<<<<<<< HEAD
+
+  "name": "ionic-plugin-keyboard",
+  "version": "2.2.1",
+
   "_args": [
     [
       {
@@ -53,10 +56,9 @@
   "bugs": {
     "url": "https://github.com/driftyco/ionic-plugin-keyboard/issues"
   },
-=======
   "name": "ionic-plugin-keyboard",
   "version": "2.2.1",
->>>>>>> removed plugins folder from gitignore
+
   "cordova": {
     "id": "ionic-plugin-keyboard",
     "platforms": [
@@ -67,7 +69,10 @@
       "windows"
     ]
   },
-<<<<<<< HEAD
+
+  "description": "Ionic Keyboard Plugin",
+  "repository": "https://github.com/driftyco/ionic-plugin-keyboard.git",
+
   "dependencies": {},
   "description": "Ionic Keyboard Plugin",
   "devDependencies": {},
@@ -78,10 +83,10 @@
   },
   "gitHead": "011283b781a94ba9db9d87fc9531790fcd8aa7e7",
   "homepage": "https://github.com/driftyco/ionic-plugin-keyboard#readme",
-=======
+
   "description": "Ionic Keyboard Plugin",
   "repository": "https://github.com/driftyco/ionic-plugin-keyboard.git",
->>>>>>> removed plugins folder from gitignore
+
   "issue": "https://github.com/driftyco/ionic-plugin-keyboard/issues",
   "keywords": [
     "ionic",
@@ -94,7 +99,10 @@
     "cordova-wp8",
     "cordova-windows"
   ],
-<<<<<<< HEAD
+
+  "author": "Ionic",
+  "license": "Apache 2.0",
+
   "license": "Apache 2.0",
   "maintainers": [
     {
@@ -118,9 +126,9 @@
     "url": "git+https://github.com/driftyco/ionic-plugin-keyboard.git"
   },
   "scripts": {},
-  "version": "2.2.1"
-=======
+  "version": "2.2.1",
+
   "author": "Ionic",
   "license": "Apache 2.0"
->>>>>>> removed plugins folder from gitignore
+
 }

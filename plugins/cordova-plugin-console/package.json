@@ -1,5 +1,12 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "name": "cordova-plugin-console",
+  "version": "1.0.7",
+  "description": "Cordova Console Plugin",
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "_args": [
     [
       {
@@ -53,11 +60,15 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-console/issues"
   },
+<<<<<<< HEAD
 =======
   "name": "cordova-plugin-console",
   "version": "1.0.7",
   "description": "Cordova Console Plugin",
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "cordova": {
     "id": "cordova-plugin-console",
     "platforms": [
@@ -70,6 +81,14 @@
     ]
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-console"
+  },
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "dependencies": {},
   "description": "Cordova Console Plugin",
   "devDependencies": {
@@ -88,12 +107,16 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-console#readme",
+<<<<<<< HEAD
 =======
   "repository": {
     "type": "git",
     "url": "https://github.com/apache/cordova-plugin-console"
   },
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "keywords": [
     "cordova",
     "console",
@@ -106,6 +129,26 @@
     "cordova-windows"
   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  },
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -157,6 +200,7 @@
     "test": "npm run jshint"
   },
   "version": "1.0.7"
+<<<<<<< HEAD
 =======
   "scripts": {
     "test": "npm run jshint",
@@ -175,4 +219,7 @@
     "jshint": "^2.6.0"
   }
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
 }

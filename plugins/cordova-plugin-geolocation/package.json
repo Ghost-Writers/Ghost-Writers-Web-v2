@@ -1,5 +1,12 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "name": "cordova-plugin-geolocation",
+  "version": "2.4.3",
+  "description": "Cordova Geolocation Plugin",
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "_args": [
     [
       {
@@ -53,11 +60,15 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-geolocation/issues"
   },
+<<<<<<< HEAD
 =======
   "name": "cordova-plugin-geolocation",
   "version": "2.4.3",
   "description": "Cordova Geolocation Plugin",
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "cordova": {
     "id": "cordova-plugin-geolocation",
     "platforms": [
@@ -74,6 +85,14 @@
     ]
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-geolocation"
+  },
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "dependencies": {},
   "description": "Cordova Geolocation Plugin",
   "devDependencies": {
@@ -92,12 +111,16 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-geolocation#readme",
+<<<<<<< HEAD
 =======
   "repository": {
     "type": "git",
     "url": "https://github.com/apache/cordova-plugin-geolocation"
   },
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "keywords": [
     "cordova",
     "geolocation",
@@ -114,6 +137,26 @@
     "cordova-firefoxos"
   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  },
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "engines": {
+    "cordovaDependencies": {
+      "3.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -153,6 +196,7 @@
     "test": "npm run jshint"
   },
   "version": "2.4.3"
+<<<<<<< HEAD
 =======
   "scripts": {
     "test": "npm run jshint",
@@ -171,4 +215,7 @@
     "jshint": "^2.6.0"
   }
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
 }

@@ -1,8 +1,16 @@
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "name": "cordova-plugin-camera",
   "version": "2.4.1",
   "description": "Cordova Camera Plugin",
   "types": "./types/index.d.ts",
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "_args": [
     [
       {
@@ -56,12 +64,16 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-camera/issues"
   },
+<<<<<<< HEAD
 
   "name": "cordova-plugin-camera",
   "version": "2.4.1",
   "description": "Cordova Camera Plugin",
   "types": "./types/index.d.ts",
 
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "cordova": {
     "id": "cordova-plugin-camera",
     "platforms": [
@@ -78,11 +90,19 @@
       "windows"
     ]
   },
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "repository": {
     "type": "git",
     "url": "https://github.com/apache/cordova-plugin-camera"
   },
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "dependencies": {},
   "description": "Cordova Camera Plugin",
   "devDependencies": {
@@ -104,10 +124,14 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-camera#readme",
+<<<<<<< HEAD
   "repository": {
     "type": "git",
     "url": "https://github.com/apache/cordova-plugin-camera"
   },
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "keywords": [
     "cordova",
     "camera",
@@ -124,7 +148,11 @@
     "cordova-browser",
     "cordova-windows"
   ],
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "scripts": {
     "precommit": "npm run gen-docs && git add README.md",
     "gen-docs": "jsdoc2md --template \"jsdoc2md/TEMPLATE.md\" \"www/**/*.js\" --plugin \"dmd-plugin-cordova-plugin\" > README.md",
@@ -145,7 +173,12 @@
     "husky": "^0.10.1",
     "jsdoc-to-markdown": "^1.2.0",
     "jshint": "^2.6.0"
+<<<<<<< HEAD
   },
+=======
+  }
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -200,6 +233,7 @@
   },
   "types": "./types/index.d.ts",
   "version": "2.4.1"
+<<<<<<< HEAD
   "scripts": {
     "precommit": "npm run gen-docs && git add README.md",
     "gen-docs": "jsdoc2md --template \"jsdoc2md/TEMPLATE.md\" \"www/**/*.js\" --plugin \"dmd-plugin-cordova-plugin\" > README.md",
@@ -222,4 +256,7 @@
     "jshint": "^2.6.0"
   }
 
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
 }

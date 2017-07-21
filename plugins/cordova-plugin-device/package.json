@@ -1,5 +1,13 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "name": "cordova-plugin-device",
+  "version": "1.1.6",
+  "description": "Cordova Device Plugin",
+  "types": "./types/index.d.ts",
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "_args": [
     [
       {
@@ -53,12 +61,16 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-device/issues"
   },
+<<<<<<< HEAD
 =======
   "name": "cordova-plugin-device",
   "version": "1.1.6",
   "description": "Cordova Device Plugin",
   "types": "./types/index.d.ts",
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "cordova": {
     "id": "cordova-plugin-device",
     "platforms": [
@@ -78,6 +90,14 @@
     ]
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-device"
+  },
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "dependencies": {},
   "description": "Cordova Device Plugin",
   "devDependencies": {
@@ -96,12 +116,16 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-device#readme",
+<<<<<<< HEAD
 =======
   "repository": {
     "type": "git",
     "url": "https://github.com/apache/cordova-plugin-device"
   },
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "keywords": [
     "cordova",
     "device",
@@ -121,6 +145,26 @@
     "cordova-osx"
   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  },
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -161,6 +205,7 @@
   },
   "types": "./types/index.d.ts",
   "version": "1.1.6"
+<<<<<<< HEAD
 =======
   "scripts": {
     "test": "npm run jshint",
@@ -179,4 +224,7 @@
     "jshint": "^2.6.0"
   }
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
 }

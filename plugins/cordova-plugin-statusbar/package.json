@@ -1,5 +1,13 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "name": "cordova-plugin-statusbar",
+  "version": "2.2.3",
+  "description": "Cordova StatusBar Plugin",
+  "types": "./types/index.d.ts",
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "_args": [
     [
       {
@@ -53,12 +61,16 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-statusbar/issues"
   },
+<<<<<<< HEAD
 =======
   "name": "cordova-plugin-statusbar",
   "version": "2.2.3",
   "description": "Cordova StatusBar Plugin",
   "types": "./types/index.d.ts",
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "cordova": {
     "id": "cordova-plugin-statusbar",
     "platforms": [
@@ -70,6 +82,27 @@
     ]
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-statusbar"
+  },
+  "keywords": [
+    "cordova",
+    "statusbar",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-wp7",
+    "cordova-wp8",
+    "cordova-windows"
+  ],
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "dependencies": {},
   "description": "Cordova StatusBar Plugin",
   "devDependencies": {
@@ -79,6 +112,7 @@
   "dist": {
     "shasum": "51c5e02ad433bebd0b0dc977a446eb91dfee1502",
     "tarball": "https://registry.npmjs.org/cordova-plugin-statusbar/-/cordova-plugin-statusbar-2.2.3.tgz"
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
   },
   "engines": {
     "cordovaDependencies": {
@@ -90,6 +124,13 @@
       }
     }
   },
+<<<<<<< HEAD
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+=======
   "homepage": "https://github.com/apache/cordova-plugin-statusbar#readme",
 =======
   "repository": {
@@ -152,6 +193,7 @@
   },
   "types": "./types/index.d.ts",
   "version": "2.2.3"
+<<<<<<< HEAD
 =======
   "scripts": {
     "test": "npm run jshint",
@@ -173,4 +215,7 @@
     "jshint": "^2.6.0"
   }
 >>>>>>> removed plugins folder from gitignore
+=======
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
 }

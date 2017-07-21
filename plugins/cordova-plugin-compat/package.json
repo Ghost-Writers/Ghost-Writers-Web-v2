@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
     "name": "cordova-plugin-compat",
     "description": "This repo is for remaining backwards compatible with previous versions of Cordova.",
     "version": "1.1.0",
@@ -29,8 +33,13 @@
         }
     ],
     "author": "Apache Software Foundation",
+<<<<<<< HEAD
     "license": "Apache-2.0",
 
+=======
+    "license": "Apache-2.0"
+=======
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
   "_args": [
     [
       {
@@ -129,6 +138,7 @@
     "url": "git://github.com/apache/cordova-plugin-compat.git"
   },
   "scripts": {},
+<<<<<<< HEAD
   "version": "1.1.0",
 
     "name": "cordova-plugin-compat",
@@ -163,4 +173,8 @@
     "license": "Apache-2.0"
 
 
+=======
+  "version": "1.1.0"
+>>>>>>> a578bf5d503e3e7668764958e7b6289cbd7762e5
+>>>>>>> 8fdd1af1f9d3ae4a9a2d97d75cd18e130401dba3
 }
