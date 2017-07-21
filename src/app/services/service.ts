@@ -22,8 +22,8 @@ declare var swal: any;
       console.log(this.users)
   }
 
-  baseUrl = 'http://52.15.90.163:3002/'
-
+  baseUrl = 'http://52.15.90.163:3002/';
+  // baseUrl = 'http://localhost:3008/'
   getUsers(): Observable<any>{
     return this.http
     .get(this.baseUrl + 'api/users')
