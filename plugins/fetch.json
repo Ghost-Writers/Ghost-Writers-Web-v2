@@ -13,7 +13,11 @@
     "cordova-plugin-compat": {
         "source": {
             "type": "registry",
+<<<<<<< HEAD
             "id": "cordova-plugin-compat@^1.1.0"
+=======
+            "id": "cordova-plugin-compat"
+>>>>>>> removed plugins folder from gitignore
         },
         "is_top_level": false,
         "variables": {}
@@ -21,7 +25,11 @@
     "cordova-plugin-console": {
         "source": {
             "type": "registry",
+<<<<<<< HEAD
             "id": "cordova-plugin-console@^1.0.5"
+=======
+            "id": "cordova-plugin-console@^1.0.7"
+>>>>>>> removed plugins folder from gitignore
         },
         "is_top_level": true,
         "variables": {}
@@ -29,7 +37,11 @@
     "cordova-plugin-device": {
         "source": {
             "type": "registry",
+<<<<<<< HEAD
             "id": "cordova-plugin-device@^1.1.4"
+=======
+            "id": "cordova-plugin-device@^1.1.6"
+>>>>>>> removed plugins folder from gitignore
         },
         "is_top_level": true,
         "variables": {}
@@ -40,7 +52,13 @@
             "id": "cordova-plugin-geolocation@^2.4.3"
         },
         "is_top_level": true,
+<<<<<<< HEAD
         "variables": {}
+=======
+        "variables": {
+            "GEOLOCATION_USAGE_DESCRIPTION": " "
+        }
+>>>>>>> removed plugins folder from gitignore
     },
     "cordova-plugin-splashscreen": {
         "source": {

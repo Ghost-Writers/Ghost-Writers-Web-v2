@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "_args": [
     [
       {
@@ -52,6 +53,12 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-statusbar/issues"
   },
+=======
+  "name": "cordova-plugin-statusbar",
+  "version": "2.2.3",
+  "description": "Cordova StatusBar Plugin",
+  "types": "./types/index.d.ts",
+>>>>>>> removed plugins folder from gitignore
   "cordova": {
     "id": "cordova-plugin-statusbar",
     "platforms": [
@@ -62,6 +69,7 @@
       "windows"
     ]
   },
+<<<<<<< HEAD
   "dependencies": {},
   "description": "Cordova StatusBar Plugin",
   "devDependencies": {
@@ -83,6 +91,12 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-statusbar#readme",
+=======
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-statusbar"
+  },
+>>>>>>> removed plugins folder from gitignore
   "keywords": [
     "cordova",
     "statusbar",
@@ -93,6 +107,7 @@
     "cordova-wp8",
     "cordova-windows"
   ],
+<<<<<<< HEAD
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -137,4 +152,25 @@
   },
   "types": "./types/index.d.ts",
   "version": "2.2.3"
+=======
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "0.1.0": {
+        "cordova": ">=3.0.0"
+      },
+      "3.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+>>>>>>> removed plugins folder from gitignore
 }

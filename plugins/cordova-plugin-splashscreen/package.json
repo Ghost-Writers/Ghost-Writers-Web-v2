@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "_args": [
     [
       {
@@ -52,6 +53,12 @@
   "bugs": {
     "url": "https://github.com/apache/cordova-plugin-splashscreen/issues"
   },
+=======
+  "name": "cordova-plugin-splashscreen",
+  "version": "4.0.3",
+  "description": "Cordova Splashscreen Plugin",
+  "types": "./types/index.d.ts",
+>>>>>>> removed plugins folder from gitignore
   "cordova": {
     "id": "cordova-plugin-splashscreen",
     "platforms": [
@@ -66,6 +73,7 @@
       "tizen"
     ]
   },
+<<<<<<< HEAD
   "dependencies": {},
   "description": "Cordova Splashscreen Plugin",
   "devDependencies": {
@@ -91,6 +99,12 @@
     }
   },
   "homepage": "https://github.com/apache/cordova-plugin-splashscreen#readme",
+=======
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apache/cordova-plugin-splashscreen"
+  },
+>>>>>>> removed plugins folder from gitignore
   "keywords": [
     "cordova",
     "splashscreen",
@@ -105,6 +119,7 @@
     "cordova-windows",
     "cordova-tizen"
   ],
+<<<<<<< HEAD
   "license": "Apache-2.0",
   "maintainers": [
     {
@@ -149,4 +164,29 @@
   },
   "types": "./types/index.d.ts",
   "version": "4.0.3"
+=======
+  "scripts": {
+    "test": "npm run jshint",
+    "jshint": "node node_modules/jshint/bin/jshint www && node node_modules/jshint/bin/jshint src && node node_modules/jshint/bin/jshint tests"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova-android": ">=3.6.0"
+      },
+      "4.0.0": {
+        "cordova-android": ">=3.6.0",
+        "cordova-windows": ">=4.4.0"
+      },
+      "5.0.0": {
+        "cordova": ">100"
+      }
+    }
+  },
+  "author": "Apache Software Foundation",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  }
+>>>>>>> removed plugins folder from gitignore
 }

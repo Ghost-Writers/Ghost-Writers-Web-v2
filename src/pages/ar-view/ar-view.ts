@@ -63,9 +63,6 @@ export class ARView {
     );
   }
 
-<<<<<<< HEAD
-}
-=======
 //   /////////
 
 
@@ -201,4 +198,3 @@ export class ARView {
 //   ////////////
 
 }
->>>>>>> (add) routes to add markers and images on top of markers and append to user model as well
