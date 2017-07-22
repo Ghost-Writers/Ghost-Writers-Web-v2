@@ -1,0 +1,131 @@
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.07, 1.07, 1.07);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+
+@keyframes bounceInUp {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// @keyframes brighten {
+//   from {
+//     opacity: 0.5;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+
+
+.usernameInput {
+  animation: bounceInUp 1s;
+  margin-top: 75px; 
+  margin-left: -5px;
+  background: transparent
+}
+// .usernameInput:focus {
+//   animation: brighten 0.5s;
+// }
+.passwordInput {
+  animation: bounceInUp 1.1s;
+  margin-top: 30px; 
+  margin-left: -5px;
+  background: transparent
+}
+.loginButton {
+  animation: bounceInUp 1.2s;
+  height: 70px;
+  border: 1.2px white solid; 
+  border-radius: 5px;
+  margin-top: 50px;
+  background: teal;
+  opacity: 0.75; 
+  color: white
+}
+.signupButton {
+  animation: bounceInUp 1.4s;
+  height: 70px;
+  border: 1.2px white solid; 
+  border-radius: 5px; 
+  margin-top: 15px; 
+  background: transparent;
+  color: white
+}
+.aboutButton {
+  animation: bounceInUp 1.8s;
+}
+.foreground {
+  z-index: 1;
+  background-color: transparent;
+}
+
+.background {
+  z-index: -1;
+  background-color: black;
+  opacity: 0.5;
+}
+
+@keyframes movingBackground {
+	from {
+		transform: translate3d(300px, 300px, 0);
+	}
+	to { 
+		transform: translate3d(-550px, -550px, 0);
+	}
+}
+
+.backgroundImage {
+  position: absolute;
+  // left: 0;
+  // right: -200px;
+  // top: -100px;
+  // bottom: 0;
+  background-image: url('https://s-media-cache-ak0.pinimg.com/736x/08/0b/2c/080b2c9947f0e6da1afa83d50203d60a--graffiti-artists-street-artists.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center;
+  // animation: movingBackground 90s infinite;
+  animation: pulse 20s infinite;
+}
+
+.title {
+  animation: pulse 20s infinite;
+}

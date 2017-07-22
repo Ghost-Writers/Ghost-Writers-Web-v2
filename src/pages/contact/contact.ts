@@ -52,6 +52,8 @@ export class ContactPage {
       animation: google.maps.Animation.DROP,
       position: {lat: latitude, lng: longitude}
     })
+    let content = "<h4>Img Url here<h4>"
+    this.addInfoWindow(marker, content);
   }
 
   addInfoWindow(marker, content) {

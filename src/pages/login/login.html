@@ -1,38 +1,25 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content padding>
+<ion-content class="foreground" padding>
 
-<h2>{{password}}</h2>
-<h2>{{username}}</h2>
-   
+  <h4 class="title" style="margin-left: 8.5%; font-size: 100px; color: white; font-family: 'Open Sans Condensed', sans-serif; letter-spacing: 24px">Ghost</h4>
+  <hr class="title" style="background-color: white; height: 2px; margin-top: -20px">
+  <h3 class="title" style="margin-left: 11%; margin-top: -5px; font-size: 40px; color: white; font-family: 'Open Sans Condensed', sans-serif; letter-spacing: 30px">Writers</h3>
 
-    
-    <!--<ion-card-header>
-      Username
-    </ion-card-header>-->
-<ion-item style="margin-top: 30px; margin-left: -5px">
-  <ion-label color="black" stacked>Username</ion-label>
-    <ion-input type= "text" name="username" [(ngModel)]="user.username"></ion-input>
-</ion-item>
-<ion-item style="margin-top: 30px; margin-left: -5px">
-  <ion-label color="black" stacked>Password</ion-label>
-  <ion-input type="password" name="password" [(ngModel)]="user.password"></ion-input>
-</ion-item>
-<button style="margin-top: 175px" color="teal" ion-button full (click)="loginButton()">Login</button>
+  <ion-item class="usernameInput">
+    <ion-label color="white" stacked>Username</ion-label>
+    <ion-input style="color: white" type="text" name="username" [(ngModel)]="user.username"></ion-input>
+  </ion-item>
+  <ion-item class="passwordInput">
+    <ion-label color="white" stacked>Password</ion-label>
+    <ion-input style="color: white" type="password" name="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+  <button class="loginButton" ion-button full (click)="loginButton()">Login
+  </button>
+  <button class="signupButton" ion-button full (click)="redirectToSignup()">Sign Up</button>
+</ion-content>
 
-<button style="margin-top: 15px" color="grey" ion-button full (click)="redirectToSignup()">Sign Up</button>
-<!--<button style="margin-top: 15px" color="grey" ion-button full (click)="takePicture()">Test Camera</button>
-  <div id= "create">
-    <input id="marker" type="file" accept="image/*" capture="camera" (change)="picChange(event)">
-    <canvas style = "background-color: black" id="capturedPhoto" width= "200px" height="200px">
-    </canvas>
-  </div>-->
-  <!--redirect to signup page-->
-<button color="teal" ion-button full (click)="getAllUsers()"> Test Service </button>
-<button color="teal" ion-button full (click)="testInput()"> Test Input </button>
-<!--<button style="margin-top: 15px" color="grey" ion-button full (click)="redirectToTabsPage()">Create Page</button>-->
+<ion-content class="background">
+  <ion-content class="backgroundImage">
 
+
+  </ion-content>
 </ion-content>
