@@ -1,0 +1,49 @@
+.foreground {
+  z-index: 1;
+  background-color: transparent;
+}
+
+
+.background {
+  z-index: -1;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.backgroundImageSignup {
+  background-image: url('https://s-media-cache-ak0.pinimg.com/736x/76/93/c8/7693c8c2a0f4cfc75c56ff345e715941--street-art-utopia-hamburg-germany.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center;
+}
+
+.input{
+  background: transparent;
+  color:white;
+  margin-top: 10px; 
+  margin-left: -5px;
+  animation: bounceInRight 1s;
+}
+
+@keyframes bounceInRight {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  to {
+    transform: none;
+  }
+}
