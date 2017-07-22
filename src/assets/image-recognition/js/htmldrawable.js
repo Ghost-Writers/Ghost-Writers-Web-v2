@@ -113,7 +113,7 @@ var World = {
 		// });
 
 
-
+		
 
 		var artList = new AR.HtmlDrawable({
 			uri: "assets/art_list.html"

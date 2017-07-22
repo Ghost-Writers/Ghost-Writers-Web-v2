@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
 var userSchema = Schema({
+  markers_created: [{ type: Schema.Types.ObjectId, ref: 'Marker' }],
   email: { type: String, unique: true, required: true },
   password: { type: String, unique: true, required: true},
   tagname: { type: String, unique: true, required: true},
