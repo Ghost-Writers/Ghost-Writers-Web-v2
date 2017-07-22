@@ -80,7 +80,7 @@ export class SignupPage {
       );
   }
   redirectToLogin = () => {
-    this.navCtrl.pop(SignupPage)
+    this.navCtrl.setRoot(LoginPage)
   }
 
 }

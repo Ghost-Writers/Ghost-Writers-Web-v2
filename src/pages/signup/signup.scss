@@ -1,0 +1,78 @@
+@keyframes bounceInUp {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+.backgroundImageSignup {
+  position: absolute;
+  background-image: url('https://s-media-cache-ak0.pinimg.com/736x/76/93/c8/7693c8c2a0f4cfc75c56ff345e715941--street-art-utopia-hamburg-germany.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:center;
+  animation: pulse 20s infinite;
+}
+.background {
+  z-index: -1;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.input{
+  animation: bounceInUp 1s;
+}
+.input1{
+  animation: bounceInUp 1.2s;
+}
+.input2{
+  animation: bounceInUp 1.4s;
+}
+.input3{
+  animation: bounceInUp 1.6s;
+}
+.input4{
+  animation: bounceInUp 1.8s;
+}
+.input5{
+  animation: bounceInUp 2s;
+}
+
+.submit{
+  animation: bounceInUp 1.2s;
+  height: 70px;
+  border: 1.2px white solid; 
+  border-radius: 5px;
+  margin-top: 70px;
+  background: teal;
+  opacity: 0.75; 
+  color: white
+}
+
+.cancel{
+  animation: bounceInUp 1.2s;
+  height: 70px;
+  border: 1.2px white solid; 
+  border-radius: 5px;
+  margin-top: 50px;
+  background: cancel;
+  opacity: 0.75; 
+  color: white
+}

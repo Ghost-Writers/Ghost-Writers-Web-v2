@@ -14,3 +14,24 @@
     }
  
 }
+
+.findArt {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 0.8;
+  }
+}

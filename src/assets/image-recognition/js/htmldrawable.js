@@ -2,7 +2,7 @@ var World = {
 	loaded: false,
 
 	init: function initFn() {
-		alert('creating overlay')
+		// alert('creating overlay')
 		this.createOverlays();
 	},
 
@@ -184,7 +184,6 @@ var World = {
 	},
 
 	worldLoaded: function worldLoadedFn() {
-		alert('collection loaded')
 		// alert(this.tracker + '<< tracker')
 		var cssDivInstructions = " style='display: table-cell;vertical-align: middle; text-align: right; width: 50%; padding-right: 15px;'";
 		var cssDivSurfer = " style='display: table-cell;vertical-align: middle; text-align: left; padding-right: 15px; width: 38px'";
