@@ -36,7 +36,7 @@ export class LoginPage {
   }
 
   redirectToSignup = () => {
-    this.navCtrl.push(SignupPage);
+    this.navCtrl.setRoot(SignupPage);
   }
 
   redirectToProfile = () => {
