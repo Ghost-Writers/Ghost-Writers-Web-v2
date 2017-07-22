@@ -11,7 +11,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { Geofence } from '@ionic-native/geofence'
 // import { ArPage } from '../assets/image-recognition/js/htmldrawable';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -51,7 +51,8 @@ import { HttpModule, JsonpModule } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
-    InAppBrowser
+    InAppBrowser,
+    Geofence
   ]
 })
 export class AppModule { }

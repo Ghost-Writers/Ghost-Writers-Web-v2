@@ -33,6 +33,11 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-geofence": {
+            "GEOFENCE_ALWAYS_USAGE_DESCRIPTION": "tracking markers in the back",
+            "GEOFENCE_IN_USE_USAGE_DESCRIPTION": "tracking markerds in app",
+            "PACKAGE_NAME": "io.ionic.starter"
         }
     },
     "dependent_plugins": {
@@ -40,6 +45,12 @@
             "PACKAGE_NAME": "io.ionic.starter"
         },
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-add-swift-support": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "es6-promise-plugin": {
             "PACKAGE_NAME": "io.ionic.starter"
         }
     }
