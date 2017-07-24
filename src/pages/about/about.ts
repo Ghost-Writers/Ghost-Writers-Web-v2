@@ -34,6 +34,7 @@ export class AboutPage implements OnInit {
       error => console.log('error line 32, aboutpage'),
       () => {
         console.log(localStorage.id)
+        alert(JSON.stringify(localStorage))
         console.log(this.tagname)
         console.log(this.art)
       }
@@ -46,7 +47,7 @@ export class AboutPage implements OnInit {
 
   launchSite() {
       // alert('in launch site')
-      let iabRef = this.iab.create('https://createpage.herokuapp.com/')
+      let iabRef = this.iab.create('http://createpage.herokuapp.com/')
       iabRef.on('loadstop', () => {
         alert('finished loading webpage')
         iabRef.executeScript({code: 'alert("in browser test")'})
