@@ -34,6 +34,7 @@ export class AboutPage implements OnInit {
       error => console.log('error line 32, aboutpage'),
       () => {
         console.log(localStorage.id)
+        alert(JSON.stringify(localStorage))
         console.log(this.tagname)
         console.log(this.art)
       }
