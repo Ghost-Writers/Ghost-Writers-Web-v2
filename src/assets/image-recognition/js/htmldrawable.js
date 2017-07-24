@@ -137,6 +137,17 @@ var World = {
 		// add drawable for each one
 
 		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
+			onImageRecognized: 
+			(targetName) => {
+				let context = this
+				alert('target name = ' + targetName)
+				navigator.geolocation.getCurrentPosition(
+					function(position) {
+						AR.logger.info('lat =' + position.coords.latitude)
+						AR.logger.info('long =' + position.coords.longitude)
+						AR.logger.info('drawables = ' + context)
+					})
+			},
 			drawables: {
 				cam: [artList]
 			}
@@ -173,6 +184,10 @@ var World = {
 			var e = document.getElementById('loadingMessage');
 			e.parentElement.removeChild(e);
 		}, 10000);
+	},
+
+	setMarkerLocation: function() {
+
 	}
 };
 
