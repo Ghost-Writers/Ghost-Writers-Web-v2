@@ -27,6 +27,10 @@ export class AboutPage implements OnInit {
     // this.client.pick()
   }
 
+  test(){
+    console.log(localStorage.id)
+  }
+
   launchSite() {
       // alert('in launch site')
       let iabRef = this.iab.create('https://createpage.herokuapp.com/')
