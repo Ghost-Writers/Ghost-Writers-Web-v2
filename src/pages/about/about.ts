@@ -48,6 +48,11 @@ export class AboutPage implements OnInit {
   launchSite() {
       // alert('in launch site')
       let iabRef = this.iab.create('http://createpage.herokuapp.com/')
+      iabRef.executeScript({code: 'document.cookie'}).then((cookie) => {
+        console.log('script from mobile success')
+        console.log(cookie)
+        alert(cookie)
+      })
       iabRef.on('loadstop', () => {
         alert('finished loading webpage')
         iabRef.executeScript({code: 'alert("in browser test")'})
