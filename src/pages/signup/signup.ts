@@ -64,7 +64,13 @@ export class SignupPage {
       }
     }
 
-    this.userService.postUser(this.user)
+    this.userService.postUser(
+      {tagname: this.user.tagname.toLowerCase(),
+       email: this.user.email.toLowerCase(),
+       phone_number: this.user.phone_number,
+       password: this.user.password
+      }
+    )
       .subscribe(
       data => swal('Sign up complete!', 'Redirecting to login', 'success'),
       error => console.log('error'),

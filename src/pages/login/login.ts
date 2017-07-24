@@ -36,7 +36,10 @@ export class LoginPage {
   }
 
   loginButton() {
-    this.userService.loginUser(this.user)
+    this.userService.loginUser(
+      {username: this.user.username.toLowerCase(),
+      password: this.user.password}
+    )
       .subscribe(
       user => this.userPost = user,
       error => console.log('error boi'),

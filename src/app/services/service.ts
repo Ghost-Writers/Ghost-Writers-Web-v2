@@ -29,6 +29,12 @@ declare var swal: any;
     .map((response: Response)=> response.json());
   }
 
+  getUser(id): Observable<any>{
+    return this.http
+    .get(this.baseUrl + 'api.users' + id)
+    .map(res => res.json());
+  }
+
     getArt(): Observable<any>{
     return this.http
     .get(this.baseUrl + 'api/art')
