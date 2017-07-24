@@ -5,7 +5,7 @@ import { SignupPage } from '../signup/signup';
 import { UserService } from '../../app/services/service';
 import { TabsPage } from '../tabs/tabs';
 
-declare var swal:any;
+declare var swal: any;
 
 @Component({
   selector: 'page-login',
@@ -17,19 +17,15 @@ export class LoginPage {
   username: any;
   password: any;
   userPost: any;
-  errorMessage: string;
   users: any;
   postData: any;
-  public base64Image: string;
 
-  constructor(public navCtrl: NavController, private userService: UserService) {}
+  constructor(public navCtrl: NavController, private userService: UserService) { }
 
   user = {
     username: null,
     password: null,
   }
-
-  ngOnInit() { this.getAllUsers() }
 
   getInput = () => {
     console.log(this.user)
@@ -39,39 +35,20 @@ export class LoginPage {
     this.navCtrl.setRoot(SignupPage);
   }
 
-  redirectToProfile = () => {
-    this.navCtrl.push(ProfilePage, {
-      id: "123",
-      name: "Carl"
-    })
-  }
-
-  getAllUsers() {
-    this.userService.getUsers()
-      .subscribe(
-      users => this.users = users,
-      error => this.errorMessage = <any>error
-      );
-    console.log(this.users)
-  }
-
-  testInput() {
-    console.log(this.user)
-  }
-
-  testService() {
-    console.log(this.users.users)
-  }
-
   loginButton() {
     this.userService.loginUser(this.user)
       .subscribe(
       user => this.userPost = user,
       error => console.log('error boi'),
       () => {
-        console.log(this.userPost.user)
-        if (this.userPost.user !== null) {
-          this.navCtrl.push(TabsPage)
+        console.log('userpost', this.userPost)
+        console.log('stringified', JSON.stringify(this.userPost))
+        console.log(this.userPost.results)
+        if (this.userPost.results === false) {
+          swal('Login Failed', 'Please try again', 'error')
+        } else {
+          console.log('userId', this.userPost.id)
+          this.navCtrl.setRoot(TabsPage, this.userPost)
           swal({
             title: 'Welcome',
             text: 'Create custom underground ghost art in as little as three steps. Make a custom marker by taking a picture of any painting or unique wall. Upload your art onto the marker. View art with ghost vision.',
@@ -82,8 +59,7 @@ export class LoginPage {
           })
         }
       }
-    )
-    
+      )
   }
 
   redirectToTabsPage() {

@@ -1,3 +1,14 @@
-page-about {
-
+.create {
+  margin-top: 20px;
+  animation: bounceInUp 1.2s;
+  height: 150px;
+  width: 100%;
+  border: 1.2px white solid; 
+  border-radius: 5px;
+  background: black;
+  opacity: 0.6; 
+  color: white;
+  font-size: 350%;
+  font-family: 'Open Sans Condensed';
+  letter-spacing: 15px;
 }

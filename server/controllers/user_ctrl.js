@@ -4,14 +4,18 @@ var bcrypt = require('bcrypt')
 module.exports = {
 
   loginUser: function(req, res) {
-    console.log(req.body)
     User
       .findOne({tagname: req.body.username})
       .exec(function(err, user) {
         if (err) return console.log(err)
         bcrypt.compare(req.body.password, user.password)
           .then(function(results) {
-            res.json({results})
+            if (results === true) {
+              res.json({id: user._id})
+            }
+            else {
+              res.json({results})
+            }
           })
           .catch(err => console.log('error'))
       })

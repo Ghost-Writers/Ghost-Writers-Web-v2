@@ -46,6 +46,10 @@ export class ContactPage {
     console.log(this.art.art)
   }
 
+  test(){
+    console.log(sessionStorage.id)
+  }
+
   addArtMarkers(latitude, longitude) {
     let marker = new google.maps.Marker({
       map: this.map,
