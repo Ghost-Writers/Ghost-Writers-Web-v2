@@ -31,7 +31,7 @@ declare var swal: any;
 
   getUser(id): Observable<any>{
     return this.http
-    .get(this.baseUrl + 'api.users' + id)
+    .get(this.baseUrl + 'api/users/' + id)
     .map(res => res.json());
   }
 
