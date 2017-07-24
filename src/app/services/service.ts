@@ -21,7 +21,7 @@ declare var swal: any;
       )
   }
 
-  baseUrl = 'http://52.15.90.163:3002/';
+  baseUrl = 'https://52.15.90.163:3002/';
   // baseUrl = 'http://localhost:3008/'
   getUsers(): Observable<any>{
     return this.http
