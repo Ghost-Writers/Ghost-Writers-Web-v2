@@ -28,7 +28,7 @@ export class TabsPage {
 
   ngOnInit(){
     this.user = this.navParams.data;
-    localStorage.id = this.navParams.data.id
+    localStorage.id = this.navParams.data.id;
     console.log('USER ID', this.user.id)
   }
 
