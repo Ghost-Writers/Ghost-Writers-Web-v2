@@ -139,13 +139,13 @@ var World = {
 		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
 			onImageRecognized: 
 			(targetName) => {
-				let context = this
+				let context = pageOne
 				alert('target name = ' + targetName)
 				navigator.geolocation.getCurrentPosition(
 					function(position) {
 						AR.logger.info('lat =' + position.coords.latitude)
 						AR.logger.info('long =' + position.coords.longitude)
-						AR.logger.info('drawables = ' + context)
+						AR.logger.info('drawables = ' + JSON.stringify(context))
 					})
 			},
 			drawables: {
