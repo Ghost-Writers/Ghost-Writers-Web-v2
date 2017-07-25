@@ -24,7 +24,7 @@ export class ContactPage {
   }
 
   ngOnInit() {
-    this.userService.getArt()
+    this.userService.getArtMap()
       .subscribe(
       arts => this.art = arts
       )
