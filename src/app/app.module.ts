@@ -51,7 +51,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
     InAppBrowser,
-    Geofence
   ]
 })
 export class AppModule { }
