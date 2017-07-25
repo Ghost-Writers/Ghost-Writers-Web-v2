@@ -46,16 +46,18 @@ export class AboutPage implements OnInit {
   }
 
   launchSite() {
+    alert('launching site')
 
 
     // alert('in launch site')
-    let iabRef = this.iab.create('http://createpage.herokuapp.com/', '_blank')
+    // let iabRef = this.iab.create('http://createpage.herokuapp.com/', '_blank')
 
     // iabRef.on('loadstop', () => {
     //   iabRef.executeScript({code: 'document.cookie'}).then((cookie) => {
     //   console.log('script from mobile success')
     //   console.log(cookie)
     //   alert(cookie)
+      
     // })
     //   alert('finished loading webpage')
     //   iabRef.executeScript({code: 'alert("in browser test")'})
@@ -64,12 +66,13 @@ export class AboutPage implements OnInit {
     // iabRef.on("loadstop", function () {
     //   iabRef.executeScript({ code: "localStorage.setItem('name', 'hello world')" });
     // });
-    if (this.platform.is('cordova')) {
-      iabRef.on('loadstop').subscribe(event => {
-        console.log('loadstop', event)
-        alert('loadstop fired!!')
-      })
-    }
+
+    // if (this.platform.is('cordova')) {
+    //   iabRef.on('loadstop').subscribe(event => {
+    //     console.log('loadstop', event)
+    //     alert('loadstop fired!!')
+    //   })
+    // }
 
     // iabRef.on("loadstop")
     //   .subscribe(
@@ -95,6 +98,39 @@ export class AboutPage implements OnInit {
     //   console.log(err)
     //   alert(err)
     // })
+
+        if (this.platform.is('cordova')) {
+      var browserRef = this.iab
+        .create(`http://createpage.herokuapp.com/`, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+
+      // const exitSubscription: Subscription = browserRef.on("exit").subscribe((event) => {
+      //   console.error("The Facebook sign in flow was canceled");
+      // });
+
+      browserRef.on("loadstart").subscribe((event) => {
+        // alert('loadstart event alert success!!!')
+        browserRef.executeScript({ code: `localStorage.setItem('storage_test_two', '${localStorage.id}')` });
+        // alert(event)
+        console.log(event);
+          console.log(event.url);
+          // exitSubscription.unsubscribe();
+          // browserRef.close();
+          var responseParameters = ((event.url).split("#")[1]).split("&");
+          var parsedResponse = {};
+          for (var i = 0; i < responseParameters.length; i++) {
+            parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
+          }
+          if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
+            console.log(parsedResponse);
+          } else {
+            console.error("Problem authenticating with Facebook");
+          }
+      });
+    } else {
+      console.error("loadstart events are not being fired in browser.");
+      alert('error in loadstart')
+    }
+
 
 
   }
