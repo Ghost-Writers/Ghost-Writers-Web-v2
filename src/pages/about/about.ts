@@ -42,7 +42,7 @@ export class AboutPage implements OnInit {
         this.arts = data.art.created_art
         this.markers = data.art.markers_created
       },
-      error => console.log('error line 32, aboutpage'),
+      error => console.log('error line 32, aboutpage', error),
       () => {
         alert(JSON.stringify(localStorage))
       }
