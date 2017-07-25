@@ -6,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { NavController } from 'ionic-angular';
 import { TabsPage } from '../pages/tabs/tabs';
-import { Geofence } from '@ionic-native/geofence';
 
 
 
@@ -20,10 +19,6 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private geofence: Geofence) {
     platform.ready().then(() => {
-    //   this.geofence.initialize().then(
-    //     () => console.log('Geofence Initialized'),
-    //     (err) => console.log('Geofence Fail')
-    //   )
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();

@@ -89,16 +89,5 @@
         },
         "is_top_level": false,
         "variables": {}
-    },
-    "cordova-plugin-geofence": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-geofence"
-        },
-        "is_top_level": true,
-        "variables": {
-            "GEOFENCE_IN_USE_USAGE_DESCRIPTION": "tracking markerds in app",
-            "GEOFENCE_ALWAYS_USAGE_DESCRIPTION": "tracking markers in the back"
-        }
     }
 }
