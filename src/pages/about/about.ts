@@ -25,7 +25,7 @@ export class AboutPage implements OnInit {
 
   ngOnInit() {
     this.userService.getUser(localStorage.id)
-    .subscribe(
+      .subscribe(
       data => {
         this.userInfo = data
         this.tagname = data.user.tagname
@@ -38,26 +38,64 @@ export class AboutPage implements OnInit {
         console.log(this.tagname)
         console.log(this.art)
       }
-    )
+      )
   }
 
-  test(){
+  test() {
     console.log(localStorage.id)
   }
 
   launchSite() {
-      // alert('in launch site')
-      let iabRef = this.iab.create('http://createpage.herokuapp.com/')
-      iabRef.executeScript({code: 'document.cookie'}).then((cookie) => {
-        console.log('script from mobile success')
-        console.log(cookie)
-        alert(cookie)
-      })
-      iabRef.on('loadstop', () => {
-        alert('finished loading webpage')
-        iabRef.executeScript({code: 'alert("in browser test")'})
-      })
-        
-      
+
+    // var win = window.open("http://google.com", "_blank", "location=yes");
+    // win.addEventListener("loadstop", function () {
+    //   //code goes here
+    //   win.executeScript({
+    //     code: "localStorage.setItem('name', '')"
+    //   });
+    // });
+    // alert('in launch site')
+    let iabRef = this.iab.create('http://createpage.herokuapp.com/', '_blank')
+
+    // iabRef.on('loadstop', () => {
+    //   iabRef.executeScript({code: 'document.cookie'}).then((cookie) => {
+    //   console.log('script from mobile success')
+    //   console.log(cookie)
+    //   alert(cookie)
+    // })
+    //   alert('finished loading webpage')
+    //   iabRef.executeScript({code: 'alert("in browser test")'})
+    // })
+
+    iabRef.on("loadstop", function () {
+      iabRef.executeScript({ code: "localStorage.setItem('name', 'hello world')" });
+    });
+
+    // iabRef.on("loadstop")
+    //   .subscribe(
+    //   () => {
+    //     console.log('in success loadstop')
+    //     alert('success loadstop')
+    //   },
+    //   err => {
+    //     console.log("InAppBrowser Loadstop Event Error: " + err);
+    //     alert('err loadstop')
+    //   });
+    // iabRef.on('loadstop').subscribe(() => {
+    //   console.log('loadstop code block')
+    //   iabRef.executeScript({code: 'document.cookie'}).then((cookie) => {
+    //   console.log('script from mobile success')
+    //   console.log(cookie)
+    //   alert(cookie)
+    // })
+    //   alert('finished loading webpage')
+    //   iabRef.executeScript({code: 'alert("in browser test")'})
+    // }, (err) => {
+    //   console.log('eror in loading page')
+    //   console.log(err)
+    //   alert(err)
+    // })
+
+
   }
 }
