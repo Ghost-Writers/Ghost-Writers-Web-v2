@@ -97,5 +97,20 @@ module.exports = {
         if (err) return console.log(err)
         res.json({success: true, message: 'user successfully deleted'})
       })
+  },
+  getCreatedArt: function(req, res) {
+    User
+      .findOne({_id: req.params.id})
+      .populate('created_art')
+      .exec(function(err, allArt) {
+        if (err) {
+          console.log(err)
+          res.json({error: err})
+        }
+        else {
+          res.json({art: allArt})
+        }
+        
+      })
   }
 }

@@ -1,6 +1,13 @@
 <ion-content padding>
   <h4>Logged in as: {{tagname}}</h4>
   <button class="create" ion-button (click)='launchSite()'>CREATE</button>
+
+  <div class="container" style="display: flex">
+    <div *ngFor="let art of arts">
+      <img src="{{art.photo_url}}" class="artpiece" />
+    </div>
+  </div>
+
   <ion-content class="backgroundCreate">
     <ion-content class="backgroundImageCreate">
     </ion-content>

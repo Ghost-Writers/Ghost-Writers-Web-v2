@@ -55,7 +55,8 @@
         "rxjs": "5.4.0",
         "sw-toolbox": "3.6.0",
         "sweetalert2": "^6.6.6",
-        "zone.js": "0.8.12"
+        "zone.js": "0.8.12",
+        "com.wikitude.phonegap.WikitudePlugin": "https://github.com/Wikitude/wikitude-cordova-plugin.git"
     },
     "devDependencies": {
         "@angular/cli": "^1.2.3",
