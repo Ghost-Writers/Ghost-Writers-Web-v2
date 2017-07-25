@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UserService } from '../../app/services/service';
 import filestack from 'filestack-js';
-// import { Platform } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 // declare var InAppBrowser: any;
 
@@ -17,7 +17,7 @@ export class AboutPage implements OnInit {
   userInfo: any;
   tagname: any;
   art; any;
-  constructor(public navCtrl: NavController, iab: InAppBrowser, private userService: UserService) {
+  constructor(public navCtrl: NavController, iab: InAppBrowser, private userService: UserService, private platform: Platform) {
     this.client = filestack.init('AxGm6Nb8rTPyGLzI0VcuEz')
     this.iab = iab
     // this.platform = platform;
@@ -47,13 +47,7 @@ export class AboutPage implements OnInit {
 
   launchSite() {
 
-    // var win = window.open("http://google.com", "_blank", "location=yes");
-    // win.addEventListener("loadstop", function () {
-    //   //code goes here
-    //   win.executeScript({
-    //     code: "localStorage.setItem('name', '')"
-    //   });
-    // });
+
     // alert('in launch site')
     let iabRef = this.iab.create('http://createpage.herokuapp.com/', '_blank')
 
@@ -67,9 +61,15 @@ export class AboutPage implements OnInit {
     //   iabRef.executeScript({code: 'alert("in browser test")'})
     // })
 
-    iabRef.on("loadstop", function () {
-      iabRef.executeScript({ code: "localStorage.setItem('name', 'hello world')" });
-    });
+    // iabRef.on("loadstop", function () {
+    //   iabRef.executeScript({ code: "localStorage.setItem('name', 'hello world')" });
+    // });
+    if (this.platform.is('cordova')) {
+      iabRef.on('loadstop').subscribe(event => {
+        console.log('loadstop', event)
+        alert('loadstop fired!!')
+      })
+    }
 
     // iabRef.on("loadstop")
     //   .subscribe(
