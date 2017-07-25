@@ -44,13 +44,9 @@ export class LoginPage {
       user => this.userPost = user,
       error => console.log('error boi'),
       () => {
-        console.log('userpost', this.userPost)
-        console.log('stringified', JSON.stringify(this.userPost))
-        console.log(this.userPost.results)
         if (this.userPost.results === false) {
           swal('Login Failed', 'Please try again', 'error')
         } else {
-          console.log('userId', this.userPost.id)
           this.navCtrl.setRoot(TabsPage, this.userPost)
           swal({
             title: 'Welcome',

@@ -7,7 +7,8 @@ module.exports = {
     Art
       .findOne({
         _id: req.params.id
-      }) // from find_view on front end mobile after image recognition 
+      }) // from find_view on front end mobile after image recognition
+
       .exec(function (err, art) {
         if (err) return console.log(err)
         res.json({
