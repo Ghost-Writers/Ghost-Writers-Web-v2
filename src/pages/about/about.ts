@@ -59,6 +59,12 @@ export class AboutPage implements OnInit {
     )
     // alert('in launch site')
     let iabRef = this.iab.create('http://createpage.herokuapp.com/', '_blank')
+      this.geolocation.getCurrentPosition().then(
+        (resp) => {
+          this.currLat = resp.coords.latitude;
+          this.currLong = resp.coords.longitude;
+        }
+      )
 
     // iabRef.on('loadstop', () => {
     //   iabRef.executeScript({code: 'document.cookie'}).then((cookie) => {
@@ -73,7 +79,6 @@ export class AboutPage implements OnInit {
     // iabRef.on("loadstop", function () {
     //   iabRef.executeScript({ code: "localStorage.setItem('name', 'hello world')" });
     // });
-
     // if (this.platform.is('cordova')) {
     //   iabRef.on('loadstop').subscribe(event => {
     //     console.log('loadstop', event)

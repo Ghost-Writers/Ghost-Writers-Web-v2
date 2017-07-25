@@ -137,19 +137,34 @@ var World = {
 		// add drawable for each one
 
 		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
-			onImageRecognized: 
-			(targetName) => {
-				let context = pageOne
-				alert('target name = ' + targetName)
-				navigator.geolocation.getCurrentPosition(
-					function(position) {
-						AR.logger.info('lat =' + position.coords.latitude)
-						AR.logger.info('long =' + position.coords.longitude)
-						AR.logger.info('drawables = ' + JSON.stringify(context))
-					})
-			},
 			drawables: {
 				cam: [artList]
+			},
+			onImageRecognized: 
+			(targetName) => {
+				let context = pageOne.drawables.cam[0];
+				$.get('http://52.15.90.163:3002/api/marker/markers/' + targetName, function(marker) {
+					let markerLat = 33.97550942699161;
+					let markerLong = -118.3908170724058;
+					// AR.logger.info('marker = ' + JSON.stringify(marker))
+					navigator.geolocation.getCurrentPosition(
+						function(position) {
+							AR.logger.info('lat =' + position.coords.latitude)
+							AR.logger.info('long =' + position.coords.longitude)
+							let latitudeDif = Math.abs(position.coords.latitude - markerLat);
+							let longitudeDif = Math.abs(position.coords.longitude - markerLong);
+							let distanceBetween = Math.sqrt(Math.pow(latitudeDif, 2) + Math.pow(longitudeDif, 2))
+							AR.logger.info('Distance ' + distanceBetween);							
+							if (distanceBetween > 0.0025){
+								context.enabled = false;
+								// alert('disabled')
+							} else {
+								context.enabled = true;
+								// alert('enabled')
+							}
+						})
+				})
+				// alert('target name = ' + targetName)
 			}
 		});
 
