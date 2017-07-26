@@ -49,7 +49,11 @@ export class AboutPage implements OnInit {
       }
       )
   }
-    
+
+  deleteArt(id) {
+    console.log('Art ID to delete: ' + id)
+  }
+
   launchSite() {
     alert('launching site')
 
