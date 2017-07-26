@@ -1,15 +1,28 @@
-<ion-content padding>
-  <h4>Logged in as: {{tagname}}</h4>
+<ion-content padding style="background: transparent; z-index: 1">
+  <!-- <h4>Logged in as: {{tagname}}</h4> -->
+  <h2 style="color: white; font-family: 'Open Sans Condensed'; letter-spacing: 10px; margin-left: 32%">Make Art</h2>
+  <hr class="title" style="background-color: white; height: 1px; margin-bottom: 8%">
   <button class="create" ion-button (click)='launchSite()'>CREATE</button>
 
-  <div class="container" style="display: flex">
-    <div *ngFor="let art of arts">
-      <img src="{{art.photo_url}}" class="artpiece" />
-    </div>
-  </div>
+  <!-- <img src="{{art.photo_url}}" *ngFor="let art of arts" class="artpiece" /> -->
+  <h2 style="color: white; font-family: 'Open Sans Condensed'; letter-spacing: 10px; margin-left: 24%">Created Art</h2>
+  <hr class="title" style="background-color: white; height: 1px; margin-bottom: 10%">
 
+  <ion-list *ngFor="let art of arts">
+    <ion-item-sliding #item style="background: transparent" (click)="expandMarker(art.photo_url)">
+      <ion-item class="artpiece">
+        <img src="{{art.photo_url}}" class="image" />
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button (click)="deleteArt(art._id)" style="background: transparent">Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>
+<ion-content class="backgroundImageCreate">
   <ion-content class="backgroundCreate">
-    <ion-content class="backgroundImageCreate">
-    </ion-content>
   </ion-content>
 </ion-content>
