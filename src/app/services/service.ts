@@ -53,6 +53,12 @@ export class UserService {
       .map(res => res.json())
   }
 
+  deleteArt(artID) {
+    return this.http
+      .delete(this.baseUrl + 'api/marker/markers/' + artID)
+      .map(res => res.json())
+  }
+
   loginUser(user) {
     if (user.username === null || user.username === "") {
       swal(

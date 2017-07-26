@@ -50,8 +50,16 @@ export class AboutPage implements OnInit {
       )
   }
 
-  deleteArt(id) {
-    console.log('Art ID to delete: ' + id)
+  deleteArt(artID) {
+    console.log('Art ID to delete: ' + artID)
+    this.userService.deleteArt(artID)
+    .subscribe(
+      results => console.log(results),
+      error => console.log('erroring deleting art', error),
+      () => {
+        console.log('Deleted art')
+      }
+    )
   }
 
   launchSite() {
