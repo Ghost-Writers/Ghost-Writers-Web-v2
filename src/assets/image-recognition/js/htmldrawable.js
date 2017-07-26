@@ -132,15 +132,6 @@ var World = {
 			});
 
 
-
-		// var testDiv = new AR.HtmlDrawable({ html: "<div>My div</div>" }, 1, {
-		// 	onClick: function () {
-		// 		htmlDrawable.html += "<div>Another div</div>";
-		// 	},
-		// 	horizontalAnchor: AR.CONST.HORIZONTAL_ANCHOR.LEFT,
-		// 	opacity: 0.9
-		// });
-
 		// get all targets
 		// loop through targets and make trackable for each target
 		// add drawable for each one
@@ -148,6 +139,32 @@ var World = {
 		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
 			drawables: {
 				cam: [artList]
+			},
+			onImageRecognized: 
+			(targetName) => {
+				let context = pageOne.drawables.cam[0];
+				$.get('http://52.15.90.163:3002/api/marker/markers/' + targetName, function(marker) {
+					let markerLat = 33.97550942699161;
+					let markerLong = -118.3908170724058;
+					// AR.logger.info('marker = ' + JSON.stringify(marker))
+					navigator.geolocation.getCurrentPosition(
+						function(position) {
+							AR.logger.info('lat =' + position.coords.latitude)
+							AR.logger.info('long =' + position.coords.longitude)
+							let latitudeDif = Math.abs(position.coords.latitude - markerLat);
+							let longitudeDif = Math.abs(position.coords.longitude - markerLong);
+							let distanceBetween = Math.sqrt(Math.pow(latitudeDif, 2) + Math.pow(longitudeDif, 2))
+							AR.logger.info('Distance ' + distanceBetween);							
+							if (distanceBetween > 0.0025){
+								context.enabled = false;
+								// alert('disabled')
+							} else {
+								context.enabled = true;
+								// alert('enabled')
+							}
+						})
+				})
+				// alert('target name = ' + targetName)
 			}
 		});
 
@@ -168,21 +185,6 @@ var World = {
 
 	},
 
-	openPicker: function openPicker() {
-		alert('in art')
-      var client = filestack.init("AQqITGUBVQ6mumB5gvo95z");
-        client.pick();
-	},
-
-	captureScreen: function captureScreenFn() {
-		getAllTargets();
-		// AR.logger.info("captureScreen called ...");
-
-		// if (World.initialized) {
-		// 	document.location = "architectsdk://button?action=captureScreen";
-		// }
-	},
-
 	worldLoaded: function worldLoadedFn() {
 		// alert(this.tracker + '<< tracker')
 		var cssDivInstructions = " style='display: table-cell;vertical-align: middle; text-align: right; width: 50%; padding-right: 15px;'";
@@ -197,6 +199,10 @@ var World = {
 			var e = document.getElementById('loadingMessage');
 			e.parentElement.removeChild(e);
 		}, 10000);
+	},
+
+	setMarkerLocation: function() {
+
 	}
 };
 

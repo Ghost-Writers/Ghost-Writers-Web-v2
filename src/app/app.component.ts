@@ -8,6 +8,7 @@ import { NavController } from 'ionic-angular';
 import { TabsPage } from '../pages/tabs/tabs';
 
 
+
 @Component({
   template: `<ion-nav #myNav [root]="rootPage"></ion-nav>`
 })

@@ -88,10 +88,6 @@
     </plugin>
     <plugin name="cordova-plugin-console" spec="^1.0.7" />
     <plugin name="cordova-plugin-device" spec="^1.1.6" />
-    <plugin name="cordova-plugin-geofence" spec="^0.7.0">
-        <variable name="GEOFENCE_IN_USE_USAGE_DESCRIPTION" value="tracking markerds in app" />
-        <variable name="GEOFENCE_ALWAYS_USAGE_DESCRIPTION" value="tracking markers in the back" />
-    </plugin>
     <plugin name="cordova-plugin-geolocation" spec="^2.4.3">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value=" " />
     </plugin>
