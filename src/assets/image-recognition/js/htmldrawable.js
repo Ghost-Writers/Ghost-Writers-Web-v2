@@ -10,7 +10,7 @@ var World = {
 
 		AR.logger.activateDebugMode();
 		AR.logger.debug('logger activated...');
-                                                                    //assets/final_test.wtc
+		//assets/final_test.wtc
 		this.targetCollectionResource = new AR.TargetCollectionResource("https://s3-eu-west-1.amazonaws.com/target-manager-live/4347e66ff6155f7613085378b923ba68/5963b498f67e6315b7658a2a/wtc/5.0/tracker.wtc", {
 		});
 
@@ -18,7 +18,7 @@ var World = {
 			onTargetsLoaded: this.worldLoaded
 		});
 
-                                                                          // '162f925e3bc546141ebbdfae63ff97f1', '595edc6053f64031675c2b92'
+		// '162f925e3bc546141ebbdfae63ff97f1', '595edc6053f64031675c2b92'
 		// this.cloudRecognitionService = new AR.CloudRecognitionService("dca0e79374ebe373d002d984495e729b", "5963b498f67e6315b7658a2a", {
 		// 	onInitialized: this.worldLoaded,
 		// 	onError: function (err) { alert('error happended' + err) }
@@ -53,22 +53,22 @@ var World = {
 		// });
 
 
-			// cloudRecognitionService.startContinuousRecognition(500, function onInterruptionCallback(suggestedInterval) {
-			// 		alert('this is error' + suggestedInterval);
-			// 	}, function onRecognizedCallback(recognized, responseData) {
-			// 		if (recognized) {
-			// 			alert('Found Target');
-			// 			// A target image was found in the processed camera frame.
-			// 			// The name of the recognized target can be retrieved from the responseData object.
-			// 			// alert('recognized target image: ' + responseData.targetInfo.name);
-			// 		}
-			// 		else {
-			// 			// No target image could be found in the processed camera frame.
-			// 		}
-			// 	}, function onErrorCallback(code, errorObject) {
-			// 		alert(code + ' ' + errorObject + '<< error');
-			// 		AR.logger.info('continiuous error ' + errorObject)
-			// 	})
+		// cloudRecognitionService.startContinuousRecognition(500, function onInterruptionCallback(suggestedInterval) {
+		// 		alert('this is error' + suggestedInterval);
+		// 	}, function onRecognizedCallback(recognized, responseData) {
+		// 		if (recognized) {
+		// 			alert('Found Target');
+		// 			// A target image was found in the processed camera frame.
+		// 			// The name of the recognized target can be retrieved from the responseData object.
+		// 			// alert('recognized target image: ' + responseData.targetInfo.name);
+		// 		}
+		// 		else {
+		// 			// No target image could be found in the processed camera frame.
+		// 		}
+		// 	}, function onErrorCallback(code, errorObject) {
+		// 		alert(code + ' ' + errorObject + '<< error');
+		// 		AR.logger.info('continiuous error ' + errorObject)
+		// 	})
 
 		// ... additional code...
 
@@ -113,7 +113,7 @@ var World = {
 		// });
 
 
-		
+
 
 		var artList = new AR.HtmlDrawable({
 			uri: "assets/art_list.html"
@@ -135,27 +135,66 @@ var World = {
 		// get all targets
 		// loop through targets and make trackable for each target
 		// add drawable for each one
-
+		var once = false;
 		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
 			drawables: {
 				cam: [artList]
 			},
-			onImageRecognized: 
+			onImageRecognized:
 			(targetName) => {
+				alert(targetName + '<< target name')
 				let context = pageOne.drawables.cam[0];
-				$.get('http://52.15.90.163:3002/api/marker/markers/' + targetName, function(marker) {
+				$.get('http://52.15.90.163:3002/api/marker/markers/' + targetName, function (marker) {
 					let markerLat = 33.97550942699161;
 					let markerLong = -118.3908170724058;
+				
+
+					pageOne.drawables.removeCamDrawable(artList)
+
+					// 	uri: "assets/art_list.html"
+					var artListTwo = new AR.HtmlDrawable({
+						html: "<div>Hello world</div><div>Test</div>"
+									
+					}, 1, {
+							viewportWidth: 1000,
+							viewportHeight: 800,
+							clickThroughEnabled: true,
+							allowDocumentLocationChanges: false,
+							onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
+								// AR.context.openInBrowser(uri);
+							},
+							onDragBegan: function (evt) {
+								AR.logger.debug(evt);
+								// this.translate.y += evt;
+							},
+							onLoaded: function() {
+								if (!once) {
+								once = true;
+								alert('reloaded')
+								artListTwo.html += "<div style='height:50px; width: 50px; background-color: lightblue; border: 2px solid purple;'>Test add div</div>"
+								// alert(JSON.strigify(marker))
+								AR.logger.info(JSON.stringify(marker))
+								}
+							}
+						});
+
+						pageOne.drawables.addCamDrawable(artListTwo)
+
+						
+
+
+
+
 					// AR.logger.info('marker = ' + JSON.stringify(marker))
 					navigator.geolocation.getCurrentPosition(
-						function(position) {
+						function (position) {
 							AR.logger.info('lat =' + position.coords.latitude)
 							AR.logger.info('long =' + position.coords.longitude)
 							let latitudeDif = Math.abs(position.coords.latitude - markerLat);
 							let longitudeDif = Math.abs(position.coords.longitude - markerLong);
 							let distanceBetween = Math.sqrt(Math.pow(latitudeDif, 2) + Math.pow(longitudeDif, 2))
-							AR.logger.info('Distance ' + distanceBetween);							
-							if (distanceBetween > 0.0025){
+							AR.logger.info('Distance ' + distanceBetween);
+							if (distanceBetween > 0.0025) {
 								context.enabled = false;
 								// alert('disabled')
 							} else {
@@ -201,7 +240,7 @@ var World = {
 		}, 10000);
 	},
 
-	setMarkerLocation: function() {
+	setMarkerLocation: function () {
 
 	}
 };
