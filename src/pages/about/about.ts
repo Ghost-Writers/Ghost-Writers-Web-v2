@@ -24,12 +24,14 @@ export class AboutPage implements OnInit {
   }
 
   ngOnInit() {
+
     this.userService.getUser(localStorage.id)
       .subscribe(
       data => {
         this.userInfo = data
         this.tagname = data.user.tagname
         this.art = data.user.markers_created
+        alert(JSON.stringify(this.userInfo))
       },
       error => console.log('error line 32, aboutpage'),
       () => {
@@ -48,83 +50,52 @@ export class AboutPage implements OnInit {
   launchSite() {
     alert('launching site')
 
-
-    // alert('in launch site')
-    // let iabRef = this.iab.create('http://createpage.herokuapp.com/', '_blank')
-
-    // iabRef.on('loadstop', () => {
-    //   iabRef.executeScript({code: 'document.cookie'}).then((cookie) => {
-    //   console.log('script from mobile success')
-    //   console.log(cookie)
-    //   alert(cookie)
-      
-    // })
-    //   alert('finished loading webpage')
-    //   iabRef.executeScript({code: 'alert("in browser test")'})
-    // })
-
-    // iabRef.on("loadstop", function () {
-    //   iabRef.executeScript({ code: "localStorage.setItem('name', 'hello world')" });
-    // });
-
-    // if (this.platform.is('cordova')) {
-    //   iabRef.on('loadstop').subscribe(event => {
-    //     console.log('loadstop', event)
-    //     alert('loadstop fired!!')
-    //   })
-    // }
-
-    // iabRef.on("loadstop")
-    //   .subscribe(
-    //   () => {
-    //     console.log('in success loadstop')
-    //     alert('success loadstop')
-    //   },
-    //   err => {
-    //     console.log("InAppBrowser Loadstop Event Error: " + err);
-    //     alert('err loadstop')
-    //   });
-    // iabRef.on('loadstop').subscribe(() => {
-    //   console.log('loadstop code block')
-    //   iabRef.executeScript({code: 'document.cookie'}).then((cookie) => {
-    //   console.log('script from mobile success')
-    //   console.log(cookie)
-    //   alert(cookie)
-    // })
-    //   alert('finished loading webpage')
-    //   iabRef.executeScript({code: 'alert("in browser test")'})
-    // }, (err) => {
-    //   console.log('eror in loading page')
-    //   console.log(err)
-    //   alert(err)
-    // })
-
-        if (this.platform.is('cordova')) {
+    if (this.platform.is('cordova')) {
       var browserRef = this.iab
-        .create(`http://createpage.herokuapp.com/`, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+        .create(`http://createpage.herokuapp.com/?userid=${this.userInfo.user._id}`, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
 
       // const exitSubscription: Subscription = browserRef.on("exit").subscribe((event) => {
       //   console.error("The Facebook sign in flow was canceled");
       // });
 
       browserRef.on("loadstart").subscribe((event) => {
+
         // alert('loadstart event alert success!!!')
-        browserRef.executeScript({ code: `localStorage.setItem('storage_test_two', '${localStorage.id}')` });
-        // alert(event)
-        console.log(event);
-          console.log(event.url);
-          // exitSubscription.unsubscribe();
-          // browserRef.close();
-          var responseParameters = ((event.url).split("#")[1]).split("&");
-          var parsedResponse = {};
-          for (var i = 0; i < responseParameters.length; i++) {
-            parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
-          }
-          if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
-            console.log(parsedResponse);
-          } else {
-            console.error("Problem authenticating with Facebook");
-          }
+        let localStorageQuery = 'localStorage.setItem("user_id", ")' + this.userInfo.user._id + '")';
+        //  win.executeScript({ code: "localStorage.setItem( 'name', '' );" });
+        browserRef.executeScript({ code: "localStorage.setItem( 'namettt', '' );" }).then(res => {
+          console.log('set')
+          console.log(res)
+          // alert(JSON.stringify(res))
+          alert('after setting test-params to local storage')
+        });
+
+          browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
+          console.log('set')
+          console.log(res)
+          // alert(JSON.stringify(res))
+          alert('after setting test-params to local storage')
+        });
+
+        browserRef.executeScript({ code: "alert(window.localStorage.getItem('name'))" }).then(res => {
+          console.log('after executing script')
+          console.log(res)
+          // alert(JSON.stringify(res))
+          alert('after setting localStorage')
+        }).catch(err => {
+          alert('error happened')
+          alert(JSON.stringify(err))
+        });
+
+        // 'localStorage.setItem("user-from-mobile")'
+
+        // browserRef.executeScript({file: 'local.storage.script.js'}).then(res => {
+        //   console.log('2: after executing script')
+        //   console.log(res)
+        //   alert(JSON.stringify(res))
+        //   alert('2: after executing script info msg')
+        // });
+        browserRef.executeScript({ code: JSON.stringify(localStorage.setItem('test-key', this.userInfo.user._id)) })
       });
     } else {
       console.error("loadstart events are not being fired in browser.");
