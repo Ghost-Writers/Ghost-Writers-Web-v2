@@ -63,6 +63,18 @@ export class AboutPage implements OnInit {
       )
   }
 
+  deleteMarker(markerID) {
+    console.log('Marker ID to delete: ' + markerID)
+    this.userService.deleteArt(markerID)
+      .subscribe(
+      results => console.log(results),
+      error => console.log('erroring deleting marker', error),
+      () => {
+        console.log('Deleted marker')
+      }
+      )
+  }
+
   expandMarker(marker) {
     console.log('clicked')
     swal({
@@ -80,7 +92,7 @@ export class AboutPage implements OnInit {
       (resp) => {
         this.currLat = resp.coords.latitude;
         this.currLong = resp.coords.longitude;
-        alert(this.currLat + ':' + this.currLong )
+        alert(this.currLat + ':' + this.currLong)
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
             .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
@@ -101,7 +113,7 @@ export class AboutPage implements OnInit {
               alert('after setting test-params to local storage')
             });
 
-              browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
+            browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
               console.log('set')
               console.log(res)
               // alert(JSON.stringify(res))
