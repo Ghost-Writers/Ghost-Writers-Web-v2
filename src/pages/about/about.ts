@@ -6,6 +6,7 @@ import { Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 // declare var InAppBrowser: any;
 import { Geolocation } from '@ionic-native/geolocation';
+declare var swal: any;
 
 @Component({
   selector: 'page-about',
@@ -53,13 +54,23 @@ export class AboutPage implements OnInit {
   deleteArt(artID) {
     console.log('Art ID to delete: ' + artID)
     this.userService.deleteArt(artID)
-    .subscribe(
+      .subscribe(
       results => console.log(results),
       error => console.log('erroring deleting art', error),
       () => {
         console.log('Deleted art')
       }
-    )
+      )
+  }
+
+  expandMarker(marker) {
+    console.log('clicked')
+    swal({
+      imageUrl: marker,
+      imageWidth: 400,
+      imageHeight: 200,
+      animation: false
+    })
   }
 
   launchSite() {

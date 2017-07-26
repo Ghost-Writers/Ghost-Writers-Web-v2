@@ -9,7 +9,7 @@
   <hr class="title" style="background-color: white; height: 1px; margin-bottom: 10%">
 
   <ion-list *ngFor="let art of arts">
-    <ion-item-sliding #item style="background: transparent">
+    <ion-item-sliding #item style="background: transparent" (click)="expandMarker(art.photo_url)">
       <ion-item class="artpiece">
         <img src="{{art.photo_url}}" class="image" />
       </ion-item>
