@@ -105,7 +105,7 @@ module.exports = {
   getCreatedArt: function (req, res) {
     User
       .findOne({ _id: req.params.id })
-      .populate('created_art')
+      .populate('markers_created')
       .exec(function (err, allArt) {
         if (err) {
           console.log(err)
