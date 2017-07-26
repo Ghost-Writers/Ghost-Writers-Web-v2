@@ -218,10 +218,10 @@ var World = {
 							AR.logger.info('Distance ' + distanceBetween);
 							if (distanceBetween > 0.0025) {
 								context.enabled = false;
-								// alert('disabled')
+								AR.logger.info('disabled')
 							} else {
 								context.enabled = true;
-								// alert('enabled')
+								Ar.logger.info('enabled')
 							}
 						})
 				})
