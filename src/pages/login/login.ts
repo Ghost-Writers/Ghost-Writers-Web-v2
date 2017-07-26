@@ -37,14 +37,18 @@ export class LoginPage {
 
   loginButton() {
     this.userService.loginUser(
-      {username: this.user.username.toLowerCase(),
-      password: this.user.password}
+      {
+        username: this.user.username.toLowerCase(),
+        password: this.user.password
+      }
     )
       .subscribe(
       user => this.userPost = user,
       error => console.log('error boi'),
       () => {
-        if (this.userPost.results === false) {
+        if (this.userPost === null) {
+          swal('Login Failed', 'Please try again', 'error')
+        } else if (this.userPost.results === false) {
           swal('Login Failed', 'Please try again', 'error')
         } else {
           this.navCtrl.setRoot(TabsPage, this.userPost)
