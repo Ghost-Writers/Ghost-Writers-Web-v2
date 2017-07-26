@@ -46,7 +46,7 @@ export class AboutPage implements OnInit {
       },
       error => console.log('error line 32, aboutpage', error),
       () => {
-        alert(JSON.stringify(localStorage))
+        console.log('getArt success')
       }
       )
   }
