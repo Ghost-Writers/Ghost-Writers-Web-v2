@@ -3,75 +3,79 @@ var bcrypt = require('bcrypt')
 
 module.exports = {
 
-  loginUser: function(req, res) {
+  loginUser: function (req, res) {
     User
-      .findOne({tagname: req.body.username})
-      .exec(function(err, user) {
-        if (err) return console.log(err)
+      .findOne({ tagname: req.body.username })
+      .exec(function (err, user) {
+        console.log('LOGIN USER: ', user)
+        if (user === null) {
+          return res.json(err)
+        }
+        if (err) return console.log('USER NOT FOUND')
         bcrypt.compare(req.body.password, user.password)
-          .then(function(results) {
+          .then(function (results) {
             if (results === true) {
-              res.json({id: user._id})
+              res.json({ id: user._id })
             }
             else {
-              res.json({results})
+              res.json({ results })
             }
           })
           .catch(err => console.log('error'))
       })
   },
 
-  index: function(req, res) {
+  index: function (req, res) {
     User
       .find({})
-      .exec( function(err, users) {
+      .exec(function (err, users) {
         if (err) return console.log(err)
         res.json({ success: true, message: 'all users', users: users })
       })
   },
-  show_test: function(req, res) {
+  show_test: function (req, res) {
     User
-      .findOne({_id: req.params.id})
-      .exec(function(err, user) {
+      .findOne({ _id: req.params.id })
+      .exec(function (err, user) {
         if (err) return console.log(err)
       })
   },
-  create: function(req, res) {
+  create: function (req, res) {
     bcrypt.hash(req.body.password, 10)
-      .then(function(hash) {
+      .then(function (hash) {
         console.log(req.body)
         req.body.password = hash;
         console.log('after hash', req.body)
         var newUser = new User(req.body);
-        newUser.save(function(err, user) {
-          if (!user) return res.json({success: false, message: 'user already exists'})
+        newUser.save(function (err, user) {
+          if (!user) return res.json({ success: false, message: 'user already exists' })
           if (err) return console.log('error', err)
-          res.json({success: true, message: 'user created', user: user});
+          res.json({ success: true, message: 'user created', user: user });
         })
       })
-      .catch(err=> console.log(err));
+      .catch(err => console.log(err));
 
   },
-  show: function(req, res) {
+  show: function (req, res) {
     User
-      .findOne({_id: req.params.id})
-      .exec(function(err, user) {
+      .findOne({ _id: req.params.id })
+      .exec(function (err, user) {
         if (err) return console.log(err)
-        res.json({success: true, message: 'user found', user: user});
+        res.json({ success: true, message: 'user found', user: user });
       })
   },
-  show_email: function(req, res) {
+  show_email: function (req, res) {
     User
-      .findOne({email: req.params.email})
-      .exec(function(err, user) {
+      .findOne({ email: req.params.email })
+      .exec(function (err, user) {
         if (err) return console.log(err)
-        res.json({success: true, message: 'user found', user: user});
+        res.json({ success: true, message: 'user found', user: user });
       })
   },
-  update_user: function(req, res) {
+  update_user: function (req, res) {
     User
-      .findOne({_id: req.params.id})
-      .exec(function(err, user){
+      .findOne({ _id: req.params.id })
+      .exec(function (err, user) {
         if (err) return console.log(err)
         if (req.body.email) {
           user.email = req.body.email;
@@ -85,32 +89,32 @@ module.exports = {
         if (req.body.phone_number) {
           user.phone_number = req.body.phone_number;
         }
-        user.save(function(err, user) {
+        user.save(function (err, user) {
           if (err) return console.log(err)
-          res.json({success: true, message: 'user info updated', user: user})
+          res.json({ success: true, message: 'user info updated', user: user })
         })
       })
   },
-  delete_user: function(req, res) {
+  delete_user: function (req, res) {
     User
-      .findOneAndRemove({_id: req.params.id}, function(err) {
+      .findOneAndRemove({ _id: req.params.id }, function (err) {
         if (err) return console.log(err)
-        res.json({success: true, message: 'user successfully deleted'})
+        res.json({ success: true, message: 'user successfully deleted' })
       })
   },
-  getCreatedArt: function(req, res) {
+  getCreatedArt: function (req, res) {
     User
-      .findOne({_id: req.params.id})
+      .findOne({ _id: req.params.id })
       .populate('created_art')
-      .exec(function(err, allArt) {
+      .exec(function (err, allArt) {
         if (err) {
           console.log(err)
-          res.json({error: err})
+          res.json({ error: err })
         }
         else {
-          res.json({art: allArt})
+          res.json({ art: allArt })
         }
-        
+
       })
   }
 }
