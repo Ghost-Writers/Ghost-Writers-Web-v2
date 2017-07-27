@@ -6,6 +6,7 @@ import { Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 // declare var InAppBrowser: any;
 import { Geolocation } from '@ionic-native/geolocation';
+import { ARView } from '../ar-view/ar-view';
 declare var swal: any;
 
 @Component({
@@ -83,7 +84,7 @@ export class AboutPage implements OnInit {
         alert(this.currLat + ':' + this.currLong )
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
-            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes, hardwareback=yes");
 
           // const exitSubscription: Subscription = browserRef.on("exit").subscribe((event) => {
           //   console.error("The Facebook sign in flow was canceled");
@@ -128,6 +129,12 @@ export class AboutPage implements OnInit {
             // });
             browserRef.executeScript({ code: JSON.stringify(localStorage.setItem('test-key', this.userInfo.user._id)) })
           });
+
+          browserRef.on('loadstart').subscribe((event) => {
+           
+            browserRef.close();
+            this.navCtrl.push(ARView);
+          })
         } else {
           console.error("loadstart events are not being fired in browser.");
           alert('error in loadstart')
