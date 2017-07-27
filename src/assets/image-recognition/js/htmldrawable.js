@@ -218,6 +218,7 @@ var World = {
 							AR.logger.info('Distance ' + distanceBetween);
 							if (distanceBetween > 0.0025) {
 								context.enabled = false;
+								alert('You are too far away from marker');
 								AR.logger.info('disabled')
 							} else {
 								context.enabled = true;
