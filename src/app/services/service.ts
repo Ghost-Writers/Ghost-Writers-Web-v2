@@ -41,9 +41,9 @@ export class UserService {
       .map(res => res.json());
   }
 
-  getArtMap(): Observable<any> {
+  getMarkers(): Observable<any> {
     return this.http
-      .get(this.baseUrl + 'api/art/')
+      .get(this.baseUrl + 'api/marker/markers')
       .map(res => res.json());
   }
 
