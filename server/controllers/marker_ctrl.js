@@ -5,6 +5,7 @@ module.exports = {
   index: function(req, res) {
     Marker
       .find({})
+      .populate('art')
       .exec(function(err, markers) {
         if (err) return console.log(err)
         res.json({success: true, message: 'all markers', markers: markers})

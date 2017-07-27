@@ -137,7 +137,13 @@ var World = {
 		// add drawable for each one
 		var once = false;
 		var last_target = '';
-		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
+		
+		$.get('http://52.15.90.163:3002/api/marker/markers/', function(res) {
+			
+		})
+
+
+		var pageOne = new AR.ImageTrackable(this.tracker, "", {
 			drawables: {
 				cam: [artList]
 			},
@@ -153,7 +159,7 @@ var World = {
 					// AR.logger.info('>> marker id >>>' + marker.marker._id + '<< marker id <<<')
 					// AR.logger.info('===== drawables before' + JSON.stringify(pageOne.drawables.cam) + '======');
 					// AR.logger.info('===== marker' + JSON.stringify(marker) + '======');
-					pageOne.drawables.removeCamDrawable(artList)
+					// pageOne.drawables.removeCamDrawable(artList)
 
 					// pageOne.removeImageTargetCamDrawables(last_target, 0)
 					// pageOne.stopExtendedTracking()
@@ -194,9 +200,9 @@ var World = {
 							}
 						});
 
-					pageOne.drawables.addCamDrawable(artListTwo)
+					// pageOne.drawables.addCamDrawable(artListTwo)
 
-
+					pageOne.drawables.cam = new Array(artListTwo)
 
 
 
