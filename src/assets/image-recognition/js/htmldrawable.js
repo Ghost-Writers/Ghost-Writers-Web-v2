@@ -137,13 +137,7 @@ var World = {
 		// add drawable for each one
 		var once = false;
 		var last_target = '';
-		
-		$.get('http://52.15.90.163:3002/api/marker/markers/', function(res) {
-			
-		})
-
-
-		var pageOne = new AR.ImageTrackable(this.tracker, "", {
+		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
 			drawables: {
 				cam: [artList]
 			},
