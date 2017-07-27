@@ -116,15 +116,15 @@ var World = {
 
 
 		var artList = new AR.HtmlDrawable({
-			uri: "assets/art_list.html"
+			uri: "https://cdn.filestackcontent.com/42pG9ZthQUGMpkLJbXEc"
 		}, 1, {
 				viewportWidth: 1000,
 				viewportHeight: 800,
-				clickThroughEnabled: true,
-				allowDocumentLocationChanges: false,
-				onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
-					// AR.context.openInBrowser(uri);
-				},
+				// clickThroughEnabled: true,
+				allowDocumentLocationChanges: true,
+				// onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
+				// 	// AR.context.openInBrowser(uri);
+				// },
 				onDragBegan: function (evt) {
 					AR.logger.debug(evt);
 					// this.translate.y += evt;
@@ -137,13 +137,7 @@ var World = {
 		// add drawable for each one
 		var once = false;
 		var last_target = '';
-		
-		$.get('http://52.15.90.163:3002/api/marker/markers/', function(res) {
-			
-		})
-
-
-		var pageOne = new AR.ImageTrackable(this.tracker, "", {
+		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
 			drawables: {
 				cam: [artList]
 			},
@@ -155,59 +149,61 @@ var World = {
 				$.get('http://52.15.90.163:3002/api/marker/markers/' + targetName, function (marker) {
 					let markerLat = 33.97550942699161;
 					let markerLong = -118.3908170724058;
+          
+
 
 					// AR.logger.info('>> marker id >>>' + marker.marker._id + '<< marker id <<<')
 					// AR.logger.info('===== drawables before' + JSON.stringify(pageOne.drawables.cam) + '======');
 					// AR.logger.info('===== marker' + JSON.stringify(marker) + '======');
 					// pageOne.drawables.removeCamDrawable(artList)
 
-					// pageOne.removeImageTargetCamDrawables(last_target, 0)
-					// pageOne.stopExtendedTracking()
-					// AR.logger.info('===== drawables after' + JSON.stringify(pageOne.drawables.cam) + '======');
-					// 	uri: "assets/art_list.html"
-					var artListTwo = new AR.HtmlDrawable({
-						html: "<div>...</div>"
+					// // pageOne.removeImageTargetCamDrawables(last_target, 0)
+					// // pageOne.stopExtendedTracking()
+					// // AR.logger.info('===== drawables after' + JSON.stringify(pageOne.drawables.cam) + '======');
+					// // 	uri: "assets/art_list.html"
+					// var artListTwo = new AR.HtmlDrawable({
+					// 	html: "<div>...</div>"
 
-					}, 1, {
-							viewportWidth: 1000,
-							viewportHeight: 800,
-							clickThroughEnabled: true,
-							allowDocumentLocationChanges: false,
-							onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
-								// AR.context.openInBrowser(uri);
-							},
-							onDragBegan: function (evt) {
-								AR.logger.debug(evt);
-								// this.translate.y += evt;
-							},
-							onLoaded: function () {
-								if (!once) {
-									once = true;
-									// alert('reloaded')
-									// artListTwo.html += "<div style='height:50px; width: 50px; background-color: lightblue; border: 2px solid purple;'>Test add div</div>"
-									// alert(JSON.strigify(marker))
-									// AR.logger.info(JSON.stringify(marker))
-									artListTwo.html = '';
-									AR.logger.info(JSON.stringify(marker.marker.art) + 'in if')
-									for (var i = 0; i < marker.marker.art.length; i++) {
-										// alert('in for loop')
-										// AR.logger.info('>>>>>>>' + marker['marker']['art'][i]['photo_url'] + '<<<<<<<')
-										artListTwo.html += "<img style='width: 800px; height: 800px;' src=" + marker['marker']['art'][i]['photo_url'] + ">"
-									}
-								} else {
-									AR.logger.info(JSON.stringify(marker.marker.art) + 'in else')
-								}
-							}
-						});
+					// }, 1, {
+					// 		viewportWidth: 1000,
+					// 		viewportHeight: 800,
+					// 		clickThroughEnabled: true,
+					// 		allowDocumentLocationChanges: false,
+					// 		onDocumentLocationChanged: function onDocumentLocationChangedFn(uri) {
+					// 			// AR.context.openInBrowser(uri);
+					// 		},
+					// 		onDragBegan: function (evt) {
+					// 			AR.logger.debug(evt);
+					// 			// this.translate.y += evt;
+					// 		},
+					// 		onLoaded: function () {
+					// 			if (!once) {
+					// 				once = true;
+					// 				// alert('reloaded')
+					// 				// artListTwo.html += "<div style='height:50px; width: 50px; background-color: lightblue; border: 2px solid purple;'>Test add div</div>"
+					// 				// alert(JSON.strigify(marker))
+					// 				// AR.logger.info(JSON.stringify(marker))
+					// 				artListTwo.html = '';
+					// 				AR.logger.info(JSON.stringify(marker.marker.art) + 'in if')
+					// 				for (var i = 0; i < marker.marker.art.length; i++) {
+					// 					// alert('in for loop')
+					// 					// AR.logger.info('>>>>>>>' + marker['marker']['art'][i]['photo_url'] + '<<<<<<<')
+					// 					artListTwo.html += "<img style='width: 800px; height: 800px;' src=" + marker['marker']['art'][i]['photo_url'] + ">"
+					// 				}
+					// 			} else {
+					// 				AR.logger.info(JSON.stringify(marker.marker.art) + 'in else')
+					// 			}
+					// 		}
+					// 	});
 
 					// pageOne.drawables.addCamDrawable(artListTwo)
 
-					pageOne.drawables.cam = new Array(artListTwo)
 
 
 
-
-					// AR.logger.info('marker = ' + JSON.stringify(marker))
+          context.uri = marker.marker.art[0].photo_url;
+          AR.logger.info('drawable =' + JSON.stringify(context))
+					AR.logger.info('marker = ' + JSON.stringify(marker))
 					navigator.geolocation.getCurrentPosition(
 						function (position) {
 							AR.logger.info('lat =' + position.coords.latitude)
@@ -218,10 +214,11 @@ var World = {
 							AR.logger.info('Distance ' + distanceBetween);
 							if (distanceBetween > 0.0025) {
 								context.enabled = false;
-								// alert('disabled')
+								alert('You are too far away from marker');
+								AR.logger.info('disabled')
 							} else {
 								context.enabled = true;
-								// alert('enabled')
+								Ar.logger.info('enabled')
 							}
 						})
 				})
