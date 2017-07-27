@@ -102,10 +102,14 @@ module.exports = {
         res.json({ success: true, message: 'user successfully deleted' })
       })
   },
+
   getCreatedArt: function (req, res) {
     User
       .findOne({ _id: req.params.id })
-      .populate('markers_created')
+      .populate({ path: 'created_art' })
+      //   path: 'markers_created',
+      //   populate: { path: 'art' }
+      // })
       .exec(function (err, allArt) {
         if (err) {
           console.log(err)
@@ -115,6 +119,18 @@ module.exports = {
           res.json({ art: allArt })
         }
 
+      })
+  },
+    
+  popArtFromArray: function (req, res) {
+    User
+      .findOne({ _id: req.params.userid })
+      .update({ $pull: { created_art: req.params.artid } })
+      .exec(function (err, data) {
+        if (err) {
+          console.log(err)
+          res.json({ error: err })
+        }
       })
   }
 }

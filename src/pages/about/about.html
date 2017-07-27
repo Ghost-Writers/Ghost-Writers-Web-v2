@@ -10,12 +10,12 @@
 
   <ion-list *ngFor="let art of arts">
     <ion-item-sliding #item style="background: transparent">
-      <ion-item class="artpiece">
-        <img src="{{art.photo_url}}" class="image" (click)="expandMarker(art.photo_url)" />
+      <ion-item class="artpiece" (click)="expandMarker(art.photo_url)">
+        <img src="{{art.photo_url}}" class="image" />
       </ion-item>
 
       <ion-item-options side="right">
-        <button ion-button (click)="deleteArt(art._id)" style="background: transparent">Delete</button>
+        <button ion-button (click)="deleteArt(art._id); popArtFromArray(art.created_by_id, art._id)" style="background: transparent">Delete</button>
       </ion-item-options>
     </ion-item-sliding>
 
