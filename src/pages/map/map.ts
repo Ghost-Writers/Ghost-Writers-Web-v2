@@ -8,11 +8,11 @@ import { UserService } from '../../app/services/service';
 declare var google;
 
 @Component({
-  selector: 'page-contact',
+  selector: 'page-map',
   providers: [UserService],
-  templateUrl: 'contact.html'
+  templateUrl: 'map.html'
 })
-export class ContactPage {
+export class MapPage {
 
   @ViewChild('map') mapElementL: ElementRef;
   map: any;
