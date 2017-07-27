@@ -4,7 +4,8 @@ import { UserService } from '../../app/services/service';
 import filestack from 'filestack-js';
 import { Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-// declare var InAppBrowser: any;
+import { App } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 import { Geolocation } from '@ionic-native/geolocation';
 declare var swal: any;
 
@@ -26,6 +27,7 @@ export class AboutPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
+    public appCtrl: App,
     iab: InAppBrowser,
     private userService: UserService,
     private geolocation: Geolocation,
@@ -86,6 +88,27 @@ export class AboutPage implements OnInit {
       imageWidth: '100%',
       imageHeight: '100%',
       animation: false
+    })
+  }
+
+  signOut() {
+    let context = this;
+    swal({
+      title: 'Sign Out',
+      text: "Are you sure you want to sign out?",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then(function () {
+      context.appCtrl.getRootNav().setRoot(LoginPage)
+    }, function (dismiss) {
+      // dismiss can be 'cancel', 'overlay',
+      // 'close', and 'timer'
+      if (dismiss === 'cancel') {
+      }
     })
   }
 

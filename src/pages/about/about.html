@@ -1,6 +1,8 @@
 <ion-content padding style="background: transparent; z-index: 1">
   <!-- <h4>Logged in as: {{tagname}}</h4> -->
-  <h2 style="color: white; font-family: 'Open Sans Condensed'; letter-spacing: 10px; margin-left: 32%">Make Art</h2>
+  <h2 style="color: white; font-family: 'Open Sans Condensed'; letter-spacing: 10px; margin-left: 32%">Make Art
+    <ion-icon style="opacity:0.5; position: absolute; margin-left: 17%" name="log-out" (click)="signOut()"></ion-icon>
+  </h2>
   <hr class="title" style="background-color: white; height: 1px; margin-bottom: 8%">
   <button class="create" ion-button (click)='launchSite()'>CREATE</button>
 
