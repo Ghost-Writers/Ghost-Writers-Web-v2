@@ -63,24 +63,24 @@ export class AboutPage implements OnInit {
       )
   }
 
-  deleteMarker(markerID) {
-    console.log('Marker ID to delete: ' + markerID)
-    this.userService.deleteArt(markerID)
-      .subscribe(
+  popArtFromArray(userID, artID) {
+    console.log('User id ', userID, 'Art id ', artID)
+    this.userService.popArtFromArray(userID, artID)
+    .subscribe(
       results => console.log(results),
-      error => console.log('erroring deleting marker', error),
+      error => console.log('erroring popArtFromArray', error),
       () => {
-        console.log('Deleted marker')
+        console.log('Successfully Popped Art from Array')
       }
-      )
+    )
   }
 
   expandMarker(marker) {
     console.log('clicked')
     swal({
       imageUrl: marker,
-      imageWidth: 400,
-      imageHeight: 200,
+      imageWidth: '100%',
+      imageHeight: '100%',
       animation: false
     })
   }

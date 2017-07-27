@@ -53,10 +53,22 @@ export class UserService {
       .map(res => res.json())
   }
 
+  // deleteArt(artID) {
+  //   return this.http
+  //     .delete(this.baseUrl + 'api/marker/markers/' + artID)
+  //     .map(res => res.json())
+  // }
+
   deleteArt(artID) {
     return this.http
-      .delete(this.baseUrl + 'api/marker/markers/' + artID)
+      .get(this.baseUrl + 'api/art/delete/' + artID)
       .map(res => res.json())
+  }
+
+  popArtFromArray(userID, artID) {
+    return this.http
+      .get(this.baseUrl + 'api/users/popArt/' + userID + '/' + artID)
+      .map(res => res.json());
   }
 
   loginUser(user) {
