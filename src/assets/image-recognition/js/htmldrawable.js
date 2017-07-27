@@ -136,25 +136,32 @@ var World = {
 		// loop through targets and make trackable for each target
 		// add drawable for each one
 		var once = false;
+		var last_target = '';
 		var pageOne = new AR.ImageTrackable(this.tracker, "*", {
 			drawables: {
 				cam: [artList]
 			},
-			onImageRecognized:
-			(targetName) => {
-				alert(targetName + '<< target name')
+			onImageRecognized: (targetName) => {
+				// alert(targetName + '<< target name')
+				// AR.logger.info('>> target name >>>' + targetName + '<< target name <<<')
+				last_target = targetName;
 				let context = pageOne.drawables.cam[0];
 				$.get('http://52.15.90.163:3002/api/marker/markers/' + targetName, function (marker) {
 					let markerLat = 33.97550942699161;
 					let markerLong = -118.3908170724058;
-				
 
+					// AR.logger.info('>> marker id >>>' + marker.marker._id + '<< marker id <<<')
+					// AR.logger.info('===== drawables before' + JSON.stringify(pageOne.drawables.cam) + '======');
+					// AR.logger.info('===== marker' + JSON.stringify(marker) + '======');
 					pageOne.drawables.removeCamDrawable(artList)
 
+					// pageOne.removeImageTargetCamDrawables(last_target, 0)
+					// pageOne.stopExtendedTracking()
+					// AR.logger.info('===== drawables after' + JSON.stringify(pageOne.drawables.cam) + '======');
 					// 	uri: "assets/art_list.html"
 					var artListTwo = new AR.HtmlDrawable({
-						html: "<div>Hello world</div><div>Test</div>"
-									
+						html: "<div>...</div>"
+
 					}, 1, {
 							viewportWidth: 1000,
 							viewportHeight: 800,
@@ -167,20 +174,29 @@ var World = {
 								AR.logger.debug(evt);
 								// this.translate.y += evt;
 							},
-							onLoaded: function() {
+							onLoaded: function () {
 								if (!once) {
-								once = true;
-								alert('reloaded')
-								artListTwo.html += "<div style='height:50px; width: 50px; background-color: lightblue; border: 2px solid purple;'>Test add div</div>"
-								// alert(JSON.strigify(marker))
-								AR.logger.info(JSON.stringify(marker))
+									once = true;
+									// alert('reloaded')
+									// artListTwo.html += "<div style='height:50px; width: 50px; background-color: lightblue; border: 2px solid purple;'>Test add div</div>"
+									// alert(JSON.strigify(marker))
+									// AR.logger.info(JSON.stringify(marker))
+									artListTwo.html = '';
+									AR.logger.info(JSON.stringify(marker.marker.art) + 'in if')
+									for (var i = 0; i < marker.marker.art.length; i++) {
+										// alert('in for loop')
+										// AR.logger.info('>>>>>>>' + marker['marker']['art'][i]['photo_url'] + '<<<<<<<')
+										artListTwo.html += "<img style='width: 800px; height: 800px;' src=" + marker['marker']['art'][i]['photo_url'] + ">"
+									}
+								} else {
+									AR.logger.info(JSON.stringify(marker.marker.art) + 'in else')
 								}
 							}
 						});
 
-						pageOne.drawables.addCamDrawable(artListTwo)
+					pageOne.drawables.addCamDrawable(artListTwo)
 
-						
+
 
 
 
