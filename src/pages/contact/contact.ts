@@ -18,18 +18,20 @@ export class ContactPage {
   map: any;
 
   name: any;
-  art: any;
+  markers: any;
   constructor(public navCtrl: NavController, private navParams: NavParams, public geolocation: Geolocation, private userService: UserService) {
     this.name = navParams.get('name')
   }
 
   ngOnInit() {
-    this.userService.getArtMap()
+    this.userService.getMarkers()
       .subscribe(
-      arts => this.art = arts
+      markers => {
+        this.markers = markers
+        console.log('markers', this.markers)
+      }
       )
 
-    console.log('anything')
     this.geolocation.getCurrentPosition()
       .then(position => console.log(position))
   }
@@ -39,24 +41,24 @@ export class ContactPage {
   }
 
   getAllArt() {
-    for (let i = 0; i < this.art.art.length; i++) {
-      console.log(this.art.art[i])
-      this.addArtMarkers(this.art.art[i].latitude, this.art.art[i].longitude);
+    for (let i = 0; i < this.markers.markers.length; i++) {
+      if (this.markers.markers[i].latitude || this.markers.markers[i].longitude) {
+        this.addArtMarkers(this.markers.markers[i].latitude, this.markers.markers[i].longitude, this.markers.markers[i].image_url);
+      } else {
+
+      }
     }
-    console.log(this.art.art)
   }
 
-  test(){
-    console.log(sessionStorage.id)
-  }
-
-  addArtMarkers(latitude, longitude) {
+  addArtMarkers(latitude, longitude, image) {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
-      position: {lat: latitude, lng: longitude}
+      position: { lat: latitude, lng: longitude }
     })
-    let content = "<h4>Img Url here<h4>"
+
+    let content = "<img src='" + image + "' style='width: 150px; height: 100%'/>"
+
     this.addInfoWindow(marker, content);
   }
 

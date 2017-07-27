@@ -36,6 +36,10 @@ export class AboutPage implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.userService.getArt(localStorage.id)
       .subscribe(
       data => {
@@ -66,13 +70,13 @@ export class AboutPage implements OnInit {
   popArtFromArray(userID, artID) {
     console.log('User id ', userID, 'Art id ', artID)
     this.userService.popArtFromArray(userID, artID)
-    .subscribe(
+      .subscribe(
       results => console.log(results),
       error => console.log('erroring popArtFromArray', error),
       () => {
         console.log('Successfully Popped Art from Array')
       }
-    )
+      )
   }
 
   expandMarker(marker) {
