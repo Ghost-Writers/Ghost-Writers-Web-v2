@@ -3,7 +3,7 @@ import { Tabs } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { ARView } from '../ar-view/ar-view';
 import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+import { MapPage } from '../map/map';
 import { NavController, NavParams } from 'ionic-angular';
 
 @Component({
@@ -17,7 +17,7 @@ export class TabsPage {
   // should be each tab's root Page
   tab1Root: any = AboutPage;
   tab2Root: any = ARView;
-  tab3Root: any = ContactPage;
+  tab3Root: any = MapPage;
   user: any;
 
   constructor(

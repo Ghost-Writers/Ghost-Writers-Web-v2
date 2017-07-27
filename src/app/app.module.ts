@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { MapPage } from '../pages/map/map';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ARView } from '../pages/ar-view/ar-view';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -21,8 +20,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
   declarations: [
     MyApp,
     AboutPage,
-    ContactPage,
-    HomePage,
+    MapPage,
     TabsPage,
     ARView,
     LoginPage,
@@ -38,8 +36,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
   entryComponents: [
     MyApp,
     AboutPage,
-    ContactPage,
-    HomePage,
+    MapPage,
     TabsPage,
     ARView,
     LoginPage,

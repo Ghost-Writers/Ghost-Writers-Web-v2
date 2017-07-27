@@ -36,6 +36,10 @@ export class AboutPage implements OnInit {
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.userService.getArt(localStorage.id)
       .subscribe(
       data => {
@@ -63,12 +67,24 @@ export class AboutPage implements OnInit {
       )
   }
 
+  popArtFromArray(userID, artID) {
+    console.log('User id ', userID, 'Art id ', artID)
+    this.userService.popArtFromArray(userID, artID)
+      .subscribe(
+      results => console.log(results),
+      error => console.log('erroring popArtFromArray', error),
+      () => {
+        console.log('Successfully Popped Art from Array')
+      }
+      )
+  }
+
   expandMarker(marker) {
     console.log('clicked')
     swal({
       imageUrl: marker,
-      imageWidth: 400,
-      imageHeight: 200,
+      imageWidth: '100%',
+      imageHeight: '100%',
       animation: false
     })
   }
@@ -80,7 +96,7 @@ export class AboutPage implements OnInit {
       (resp) => {
         this.currLat = resp.coords.latitude;
         this.currLong = resp.coords.longitude;
-        alert(this.currLat + ':' + this.currLong )
+        alert(this.currLat + ':' + this.currLong)
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
             .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
@@ -101,7 +117,7 @@ export class AboutPage implements OnInit {
               alert('after setting test-params to local storage')
             });
 
-              browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
+            browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
               console.log('set')
               console.log(res)
               // alert(JSON.stringify(res))

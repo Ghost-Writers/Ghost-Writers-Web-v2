@@ -10,6 +10,7 @@ userRouter.get('/:id', UserController.show);
 userRouter.get('/email/:email', UserController.show_email);
 userRouter.put('/:id', UserController.update_user);
 userRouter.delete('/:id', UserController.delete_user);
-userRouter.get('/created/:id', UserController.getCreatedArt)
+userRouter.get('/created/:id', UserController.getCreatedArt);
+userRouter.get('/popArt/:userid/:artid', UserController.popArtFromArray);
 
 module.exports = userRouter;
