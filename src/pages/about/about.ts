@@ -113,13 +113,10 @@ export class AboutPage implements OnInit {
   }
 
   launchSite() {
-    alert('launching site')
-
     this.geolocation.getCurrentPosition().then(
       (resp) => {
         this.currLat = resp.coords.latitude;
         this.currLong = resp.coords.longitude;
-        alert(this.currLat + ':' + this.currLong)
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
             .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
@@ -137,21 +134,21 @@ export class AboutPage implements OnInit {
               console.log('set')
               console.log(res)
               // alert(JSON.stringify(res))
-              alert('after setting test-params to local storage')
+              // alert('after setting test-params to local storage')
             });
 
             browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
               console.log('set')
               console.log(res)
               // alert(JSON.stringify(res))
-              alert('after setting test-params to local storage')
+              // alert('after setting test-params to local storage')
             });
 
             browserRef.executeScript({ code: "alert(window.localStorage.getItem('name'))" }).then(res => {
               console.log('after executing script')
               console.log(res)
               // alert(JSON.stringify(res))
-              alert('after setting localStorage')
+              // alert('after setting localStorage')
             }).catch(err => {
               alert('error happened')
               alert(JSON.stringify(err))
