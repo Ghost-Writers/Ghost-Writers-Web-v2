@@ -4,7 +4,8 @@ import { UserService } from '../../app/services/service';
 import filestack from 'filestack-js';
 import { Platform } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-// declare var InAppBrowser: any;
+import { App } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ARView } from '../ar-view/ar-view';
 declare var swal: any;
@@ -27,16 +28,20 @@ export class AboutPage implements OnInit {
 
   constructor(
     public navCtrl: NavController,
+    public appCtrl: App,
     iab: InAppBrowser,
     private userService: UserService,
     private geolocation: Geolocation,
     private platform: Platform) {
     this.client = filestack.init('AxGm6Nb8rTPyGLzI0VcuEz')
     this.iab = iab
-    // this.platform = platform;
   }
 
   ngOnInit() {
+    this.refresh();
+  }
+
+  refresh() {
     this.userService.getArt(localStorage.id)
       .subscribe(
       data => {
@@ -64,15 +69,47 @@ export class AboutPage implements OnInit {
       )
   }
 
+  popArtFromArray(userID, artID) {
+    console.log('User id ', userID, 'Art id ', artID)
+    this.userService.popArtFromArray(userID, artID)
+      .subscribe(
+      results => console.log(results),
+      error => console.log('erroring popArtFromArray', error),
+      () => {
+        console.log('Successfully Popped Art from Array')
+      }
+      )
+  }
+
   expandMarker(marker) {
     console.log('clicked')
     swal({
       imageUrl: marker,
-      imageWidth: 400,
-      imageHeight: 200,
+      imageWidth: '100%',
+      imageHeight: '100%',
       animation: false
     })
   }
+
+  signOut() {
+    let context = this;
+    swal({
+      title: 'Sign Out',
+      text: "Are you sure you want to sign out?",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then(function () {
+      context.appCtrl.getRootNav().setRoot(LoginPage)
+    }, function (dismiss) {
+      if (dismiss === 'cancel') {
+      }
+    })
+  }
+
 
   launchSite() {
     alert('launching site')
@@ -81,82 +118,43 @@ export class AboutPage implements OnInit {
       (resp) => {
         this.currLat = resp.coords.latitude;
         this.currLong = resp.coords.longitude;
-        alert(this.currLat + ':' + this.currLong)
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
-            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes,hardwareback=yes,zoom=no");
+            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes,hardwareback=no,zoom=no");
+          
+          browserRef.on().subscribe((event) => {
+            alert('start event =' + event)
 
-          // const exitSubscription: Subscription = browserRef.on("exit").subscribe((event) => {
-          //   console.error("The Facebook sign in flow was canceled");
-          // });
-
-          browserRef.on("loadstart").subscribe((event) => {
-
-            // alert('loadstart event alert success!!!')
             let localStorageQuery = 'localStorage.setItem("user_id", ")' + this.userInfo.user._id + '")';
-            //  win.executeScript({ code: "localStorage.setItem( 'name', '' );" });
             browserRef.executeScript({ code: "localStorage.setItem( 'namettt', '' );" }).then(res => {
               console.log('set')
               console.log(res)
-              // alert(JSON.stringify(res))
-              alert('after setting test-params to local storage')
             });
 
             browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
               console.log('set')
               console.log(res)
-              // alert(JSON.stringify(res))
-              alert('after setting test-params to local storage')
             });
 
             browserRef.executeScript({ code: "alert(window.localStorage.getItem('name'))" }).then(res => {
               console.log('after executing script')
               console.log(res)
-              // alert(JSON.stringify(res))
-              alert('after setting localStorage')
             }).catch(err => {
-              alert('error happened')
-              alert(JSON.stringify(err))
             });
-
-            // 'localStorage.setItem("user-from-mobile")'
-
-            // browserRef.executeScript({file: 'local.storage.script.js'}).then(res => {
-            //   console.log('2: after executing script')
-            //   console.log(res)
-            //   alert(JSON.stringify(res))
-            //   alert('2: after executing script info msg')
-            // });
             browserRef.executeScript({ code: JSON.stringify(localStorage.setItem('test-key', this.userInfo.user._id)) })
-          });
+          },
+          (err) => alert('this is my error' + JSON.stringify(err))
+        );
 
           browserRef.on('loadstart').subscribe((event) => {
-                browserRef.close();
-                this.navCtrl.push(ARView);
-              // alert(JSON.stringify(event.url))
-              // alert(JSON.stringify(event))
-
-            // if (event.url === 'http://www.lewisbracey.com/') {
-            //   browserRef.close();
-            //   alert(JSON.stringify(event.url))
-            //   alert(JSON.stringify(event))
-            //   // this.navCtrl.push(ARView);
-            // } else {
-            //   browserRef.close();
-            //   alert(JSON.stringify(event.url))
-            //   alert(JSON.stringify(event))
-            // }
+           alert('event = ' + event)
+            browserRef.close();
+            this.navCtrl.push(ARView);
           })
         } else {
           console.error("loadstart events are not being fired in browser.");
-          alert('error in loadstart')
         }
       }
     )
-
-
-
-    // alert('in launch site')
-    // let iabRef = this.iab.create('http://createpage.herokuapp.com/', '_blank')
   }
 }
