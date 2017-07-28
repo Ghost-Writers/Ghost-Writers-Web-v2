@@ -14,7 +14,7 @@ module.exports = {
   show: function(req, res) {
     Marker
       .findOne({_id: req.params.id})
-      .populate('art')
+      .populate('art', 'created_by_user_id')
       .exec(function(err, marker) {
         if (err) return console.log(err)
         res.json({success: true, message: 'marker found', marker: marker})

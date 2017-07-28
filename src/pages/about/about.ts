@@ -122,7 +122,7 @@ export class AboutPage implements OnInit {
           var browserRef = this.iab
             .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes,hardwareback=no,zoom=no");
           
-          browserRef.on().subscribe((event) => {
+          browserRef.on('loadstart').subscribe((event) => {
             alert('start event =' + event)
 
             let localStorageQuery = 'localStorage.setItem("user_id", ")' + this.userInfo.user._id + '")';
