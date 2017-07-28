@@ -52,9 +52,9 @@ var World = {
 							for (var k = 0; k < marker_res.marker.art.length; k++) {
 								if (k === 0) {
 
-									artList.html += `<div class='item active img-container'> <img class='d-block img-fluid' src='${marker_res.marker.art[k].photo_url}'> <div class='carousel-caption'> <h3>@${marker_res.marker.art[k].created_by_id}</h3> </div> </div>"`
+									artList.html += `<div class='item active img-container'> <img class='d-block img-fluid' src='${marker_res.marker.art[k].photo_url}'> <div class='carousel-caption'> <h3>@${marker_res.marker.art[k].created_by_id.tagname}</h3> </div> </div>"`
 								} else {
-									artList.html += `<div class='item img-container'> <img class='d-block img-fluid' src='${marker_res.marker.art[k].photo_url}'> <div class='carousel-caption'> <h3>@${marker_res.marker.art[k].created_by_id}</h3> </div> </div>"`
+									artList.html += `<div class='item img-container'> <img class='d-block img-fluid' src='${marker_res.marker.art[k].photo_url}'> <div class='carousel-caption'> <h3>@${marker_res.marker.art[k].created_by_id.tagname}</h3> </div> </div>"`
 
 								}
 							}
