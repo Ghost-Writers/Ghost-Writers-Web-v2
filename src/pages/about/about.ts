@@ -35,7 +35,6 @@ export class AboutPage implements OnInit {
     private platform: Platform) {
     this.client = filestack.init('AxGm6Nb8rTPyGLzI0VcuEz')
     this.iab = iab
-    // this.platform = platform;
   }
 
   ngOnInit() {
@@ -106,8 +105,6 @@ export class AboutPage implements OnInit {
     }).then(function () {
       context.appCtrl.getRootNav().setRoot(LoginPage)
     }, function (dismiss) {
-      // dismiss can be 'cancel', 'overlay',
-      // 'close', and 'timer'
       if (dismiss === 'cancel') {
       }
     })
@@ -115,69 +112,49 @@ export class AboutPage implements OnInit {
 
 
   launchSite() {
+    alert('launching site')
+
     this.geolocation.getCurrentPosition().then(
       (resp) => {
         this.currLat = resp.coords.latitude;
         this.currLong = resp.coords.longitude;
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
-            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes, hardwareback=yes");
+            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes, hardwareback=no");
+          
+          browserRef.on().subscribe((event) => {
+            alert('start event =' + event)
 
-          // const exitSubscription: Subscription = browserRef.on("exit").subscribe((event) => {
-          //   console.error("The Facebook sign in flow was canceled");
-          // });
-
-          browserRef.on("loadstart").subscribe((event) => {
-
-            // alert('loadstart event alert success!!!')
             let localStorageQuery = 'localStorage.setItem("user_id", ")' + this.userInfo.user._id + '")';
-            //  win.executeScript({ code: "localStorage.setItem( 'name', '' );" });
             browserRef.executeScript({ code: "localStorage.setItem( 'namettt', '' );" }).then(res => {
               console.log('set')
               console.log(res)
-              // alert(JSON.stringify(res))
             });
 
               browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
               console.log('set')
               console.log(res)
-              // alert(JSON.stringify(res))
+            });
 
             browserRef.executeScript({ code: "alert(window.localStorage.getItem('name'))" }).then(res => {
               console.log('after executing script')
               console.log(res)
-              // alert(JSON.stringify(res))
             }).catch(err => {
-              // alert('error happened')
-              // alert(JSON.stringify(err))
             });
-
-            // 'localStorage.setItem("user-from-mobile")'
-
-            // browserRef.executeScript({file: 'local.storage.script.js'}).then(res => {
-            //   console.log('2: after executing script')
-            //   console.log(res)
-            //   alert(JSON.stringify(res))
-            //   alert('2: after executing script info msg')
-            // });
             browserRef.executeScript({ code: JSON.stringify(localStorage.setItem('test-key', this.userInfo.user._id)) })
-          });
+          },
+          (err) => alert('this is my error' + JSON.stringify(err))
+        );
 
           browserRef.on('loadstart').subscribe((event) => {
-           
+           alert('event = ' + event)
             browserRef.close();
             this.navCtrl.push(ARView);
           })
         } else {
           console.error("loadstart events are not being fired in browser.");
-          // alert('error in loadstart')
         }
       }
     )
-
-
-
-    // alert('in launch site')
-    // let iabRef = this.iab.create('http://createpage.herokuapp.com/', '_blank')
   }
 }
