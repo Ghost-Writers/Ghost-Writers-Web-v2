@@ -112,7 +112,7 @@ export class AboutPage implements OnInit {
 
 
   launchSite() {
-    alert('launching site')
+    // alert('launching site')
 
     this.geolocation.getCurrentPosition().then(
       (resp) => {
@@ -123,7 +123,7 @@ export class AboutPage implements OnInit {
             .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes,hardwareback=no,zoom=no");
           
           browserRef.on('loadstart').subscribe((event) => {
-            alert('start event =' + event)
+            // alert('start event =' + event)
 
             let localStorageQuery = 'localStorage.setItem("user_id", ")' + this.userInfo.user._id + '")';
             browserRef.executeScript({ code: "localStorage.setItem( 'namettt', '' );" }).then(res => {
@@ -147,7 +147,7 @@ export class AboutPage implements OnInit {
         );
 
           browserRef.on('loadstart').subscribe((event) => {
-           alert('event = ' + event)
+          //  alert('event = ' + event)
             browserRef.close();
             this.navCtrl.push(ARView);
           })
