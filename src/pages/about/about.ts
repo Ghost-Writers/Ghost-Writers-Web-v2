@@ -7,6 +7,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { App } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { Geolocation } from '@ionic-native/geolocation';
+import { ARView } from '../ar-view/ar-view';
 declare var swal: any;
 
 @Component({
@@ -112,16 +113,15 @@ export class AboutPage implements OnInit {
     })
   }
 
-  launchSite() {
+   launchSite() {
 
     this.geolocation.getCurrentPosition().then(
       (resp) => {
         this.currLat = resp.coords.latitude;
         this.currLong = resp.coords.longitude;
-        // alert(this.currLat + ':' + this.currLong)
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
-            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes, hardwareback=yes");
 
           // const exitSubscription: Subscription = browserRef.on("exit").subscribe((event) => {
           //   console.error("The Facebook sign in flow was canceled");
@@ -136,24 +136,21 @@ export class AboutPage implements OnInit {
               console.log('set')
               console.log(res)
               // alert(JSON.stringify(res))
-              // alert('after setting test-params to local storage')
             });
 
-            browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
+              browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
               console.log('set')
               console.log(res)
               // alert(JSON.stringify(res))
-              // alert('after setting test-params to local storage')
             });
 
             browserRef.executeScript({ code: "alert(window.localStorage.getItem('name'))" }).then(res => {
               console.log('after executing script')
               console.log(res)
               // alert(JSON.stringify(res))
-              // alert('after setting localStorage')
             }).catch(err => {
               // alert('error happened')
-              alert(JSON.stringify(err))
+              // alert(JSON.stringify(err))
             });
 
             // 'localStorage.setItem("user-from-mobile")'
@@ -166,9 +163,15 @@ export class AboutPage implements OnInit {
             // });
             browserRef.executeScript({ code: JSON.stringify(localStorage.setItem('test-key', this.userInfo.user._id)) })
           });
+
+          browserRef.on('loadstart').subscribe((event) => {
+           
+            browserRef.close();
+            this.navCtrl.push(ARView);
+          })
         } else {
           console.error("loadstart events are not being fired in browser.");
-          alert('error in loadstart')
+          // alert('error in loadstart')
         }
       }
     )
