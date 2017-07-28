@@ -120,9 +120,9 @@ export class AboutPage implements OnInit {
         this.currLong = resp.coords.longitude;
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
-            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes, hardwareback=no");
+            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes,hardwareback=no,zoom=no");
           
-          browserRef.on().subscribe((event) => {
+          browserRef.on('loadstart').subscribe((event) => {
             alert('start event =' + event)
 
             let localStorageQuery = 'localStorage.setItem("user_id", ")' + this.userInfo.user._id + '")';
@@ -131,7 +131,7 @@ export class AboutPage implements OnInit {
               console.log(res)
             });
 
-              browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
+            browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
               console.log('set')
               console.log(res)
             });
