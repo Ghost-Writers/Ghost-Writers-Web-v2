@@ -113,8 +113,8 @@ export class AboutPage implements OnInit {
     })
   }
 
-   launchSite() {
 
+  launchSite() {
     this.geolocation.getCurrentPosition().then(
       (resp) => {
         this.currLat = resp.coords.latitude;
@@ -142,7 +142,6 @@ export class AboutPage implements OnInit {
               console.log('set')
               console.log(res)
               // alert(JSON.stringify(res))
-            });
 
             browserRef.executeScript({ code: "alert(window.localStorage.getItem('name'))" }).then(res => {
               console.log('after executing script')
