@@ -81,10 +81,10 @@ export class AboutPage implements OnInit {
       (resp) => {
         this.currLat = resp.coords.latitude;
         this.currLong = resp.coords.longitude;
-        alert(this.currLat + ':' + this.currLong )
+        alert(this.currLat + ':' + this.currLong)
         if (this.platform.is('cordova')) {
           var browserRef = this.iab
-            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes, hardwareback=yes");
+            .create('http://createpage.herokuapp.com/?userid=' + localStorage.id + '&currlat=' + this.currLat + '&currlong=' + this.currLong, "_blank", "location=no,clearsessioncache=yes,clearcache=yes,hardwareback=yes,zoom=no");
 
           // const exitSubscription: Subscription = browserRef.on("exit").subscribe((event) => {
           //   console.error("The Facebook sign in flow was canceled");
@@ -102,7 +102,7 @@ export class AboutPage implements OnInit {
               alert('after setting test-params to local storage')
             });
 
-              browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
+            browserRef.executeScript({ code: "document.getElementById('test-el').value = 123456" }).then(res => {
               console.log('set')
               console.log(res)
               // alert(JSON.stringify(res))
@@ -131,9 +131,21 @@ export class AboutPage implements OnInit {
           });
 
           browserRef.on('loadstart').subscribe((event) => {
-           
-            browserRef.close();
-            this.navCtrl.push(ARView);
+                browserRef.close();
+                this.navCtrl.push(ARView);
+              // alert(JSON.stringify(event.url))
+              // alert(JSON.stringify(event))
+
+            // if (event.url === 'http://www.lewisbracey.com/') {
+            //   browserRef.close();
+            //   alert(JSON.stringify(event.url))
+            //   alert(JSON.stringify(event))
+            //   // this.navCtrl.push(ARView);
+            // } else {
+            //   browserRef.close();
+            //   alert(JSON.stringify(event.url))
+            //   alert(JSON.stringify(event))
+            // }
           })
         } else {
           console.error("loadstart events are not being fired in browser.");
